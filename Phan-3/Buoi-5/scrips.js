@@ -48,3 +48,123 @@
 // console.log(typeof(c));
 // console.log(typeof(d));
 // console.log(typeof a == "number")
+
+// string.indexOf("something", int);
+// string.lastIndexOf("something", int);
+
+//string.slice(start, and)
+// start: vi tri bat dau (bat buoc)
+// end: vi tri ket thuc cat(khong bat buoc)
+
+// mystring.slice(10, 21);
+// mystring.slice(0); lay toan bo chuoi
+
+
+// replace()
+// dung de thay the 1 chuoi thanh mot chuoi moi, nhung chi thay the chuoi dau tien ma no tim thay
+// string.replace(searchValue, newValue);
+
+//regex tim` hieu them
+
+// toUpperCase();
+// toLowerCase();
+
+// trim();
+// dung de bodi khong trang o 2 dau
+
+
+// charAt()
+// dung de lay ky tu thong qua index
+// string.charAt(index);
+
+// split()
+// chuyen mot chuoi thanh mot array
+// nhung can tim ra diem chung cua chuoi do
+
+// toFixed()
+
+//array.toString()
+// array.join()
+// array.pop()
+// array.push()
+
+// array.shift()
+// Dung de xoa phan tu dau mang
+// tra ve phan tu dau mang
+
+// array.unshift()
+
+// array.splice()
+// xoa hoac chen phan tu moi vao mang
+// tra ve mang bi xoa
+
+// var tenHam = (thamso1, thamso2) => {
+//     //code
+
+// }
+
+// setTimeout(() => console.log("OK", 3000))
+
+// var tinhTong = (array) => {
+//     let tong = 0;
+//     for (let i = 0; i< array.length; i++){
+//         if (array[i] % 2 == 0){
+//             tong += array[i];
+//         }
+//     }
+//     return tong;
+// }
+
+// const results = tinhTong(mang);
+
+// try catch
+
+
+// const a = 10;
+// try{
+//     console.log("a = " + a);
+// } catch (error){
+//     console.log(error);
+// } finally{
+//     console.log("luon chay vao day");
+// }
+
+// const oLaiLop = monHoc.some((item) => {
+//     return item.diem < 4;
+// });
+
+// if (oLaiLop === true){
+//     console.log("ow lai lop");
+// } else{
+//     console.log("Day khong la hoc sinh gioi!");
+// }
+
+// find()
+
+
+const MonHoc = [
+    {
+        TenMonHoc: "Toan",
+        Diem: 9.6
+    },
+    {
+        TenMonHoc: "Tin",
+        Diem: 9.6
+    },
+    {
+        TenMonHoc: "Hoa",
+        Diem: 9.6
+    },
+]
+
+// console.log(MonHoc);
+
+// const monTin = MonHoc.find((item) => {
+//     return item.TenMonHoc === "Tin";
+// });
+// console.log(monTin);
+
+const monTin = MonHoc.filter((item) => {
+    return item.TenMonHoc === "Tin";
+});
+console.log(monTin);
