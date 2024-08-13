@@ -142,20 +142,20 @@
 // find()
 
 
-const MonHoc = [
-    {
-        TenMonHoc: "Toan",
-        Diem: 9.6
-    },
-    {
-        TenMonHoc: "Tin",
-        Diem: 9.6
-    },
-    {
-        TenMonHoc: "Hoa",
-        Diem: 9.6
-    },
-]
+// const MonHoc = [
+//     {
+//         TenMonHoc: "Toan",
+//         Diem: 9.6
+//     },
+//     {
+//         TenMonHoc: "Tin",
+//         Diem: 9.6
+//     },
+//     {
+//         TenMonHoc: "Hoa",
+//         Diem: 9.6
+//     },
+// ]
 
 // console.log(MonHoc);
 
@@ -164,7 +164,52 @@ const MonHoc = [
 // });
 // console.log(monTin);
 
-const monTin = MonHoc.filter((item) => {
-    return item.TenMonHoc === "Tin";
-});
-console.log(monTin);
+// const monTin = MonHoc.filter((item) => {
+//     return item.TenMonHoc === "Tin";
+// });
+// console.log(monTin);
+
+// const newArr = MonHoc.map((item) => {
+//     return item;
+// })
+
+// console.log(newArr);
+
+// const number = [1, 2, 3, 4, 5];
+
+// const sum = number.reduce((total, item) => {
+//     console.log(total);
+//     console.log(item);
+//     console.log("--------------------");
+//     return total + item;
+// })
+
+//     KHAI NIEM VE DOM
+
+// Lay ra cac the HTML
+// Thay doi cac thuoc tinh cua the HTML
+
+// Cac loai DOM trong Javascript
+    // *DOM document: Để chứa toàn bộ các phần tử HTML
+        // getElementById
+            // Để lấy ra một thẻ HTML theo id
+            // Kết quả sẽ trả về 1 phần tử.
+            // Cú pháp:
+            // var element = document.getElementById('idName');
+
+    // *DOM element: Để lấy ra các thẻ HTML
+
+    // *DOM HTML: Để thay đổi nội dung và thuộc tính của các thẻ HTML
+
+    // DOM CSS: Để thay đổi CSS của thẻ HTML
+
+    // DOM Event: Để gán các sự kiện vào thẻ HTML
+
+    // *DOM Listener: Để lắng nghe các sự kiện tác động lên thẻ HTMl.
+
+    // DOM Navigation: THể hiện mối quan hệ cha - con của các thẻ HTML.
+
+    // DOM Nodes: Để thao tác với HTMl thông qua đối tướng(Object).
+
+
+    
