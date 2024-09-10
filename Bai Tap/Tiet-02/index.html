@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <H1>Javascript basic (2)</H1>
+
+    <script>
+
+        console.log("\nCâu 01: Max number (Tìm số lớn nhất)");
+        console.log("Viết hàm truyền vào 2 tham số. Sau đó tìm số lớn nhất trong 2 số đó.");
+
+        function findMaxNumber(a, b){
+            if (a > b){
+                return a;
+            }else return b;
+        }
+
+        const checkMax1 = findMaxNumber(10, 5);
+        console.log("Max Number:", checkMax1);
+
+        console.log("\nCâu 02: Tốc độ giới hạn");
+        const SPEEDLIMIT = 70;
+        const KMPERPOINT = 5;
+        const MONEY = 30000;
+
+
+        function checkSpeedLimit(curSpeed) {
+        if (curSpeed <= SPEEDLIMIT) {
+            return "Vận tốc an toàn";
+        } else {
+            const penaltyPoint = Math.floor((curSpeed - SPEEDLIMIT) / KMPERPOINT);
+            // Math.floor để làm tròn xuống
+
+
+            if (penaltyPoint < 10) {
+            return "Bạn đã bị phạt: " + penaltyPoint * MONEY + "đ";
+            } else {
+            return "Bạn đã bị tước giấy phép lái xe";
+            }
+        }
+        }
+
+
+        const checkPoin1 = checkSpeedLimit(40);
+        console.log(checkPoin1); // Vận tốc an toàn
+
+
+        const checkPoin2 = checkSpeedLimit(70);
+        console.log(checkPoin2); // Vận tốc an toàn
+
+
+        const checkPoin3 = checkSpeedLimit(75);
+        console.log(checkPoin3); // Bạn đã bị phạt: 30000đ
+
+
+        const checkPoin4 = checkSpeedLimit(99);
+        console.log(checkPoin4); // Bạn đã bị phạt: 150000đ
+
+
+        const checkPoin5 = checkSpeedLimit(120);
+        console.log(checkPoin5); // Bạn đã bị tước giấy phép lái xe
+
+        console.log("\nCau 3:In ra key, value cua object");
+        console.log("Viết hàm kiểm tra và chỉ in ra các cặp key, value có value là kiểu string.");
+
+        const person = {
+            name: "Le Van A",
+            age: 40,
+            height: 175,
+            country: "Viet Nam",
+            designation: "UI Developer",
+          };
+          // In ra:
+          // name : Le Van A
+          // country : Viet Nam
+          // designation : UI Developer
+          // ----------
+          
+          
+          const technology = {
+            name: "JavaScipt",
+            version: 6,
+            purpose: "Scripting language for Web",
+            developer: "Netscape Corporation",
+          };
+          // In ra:
+          // name : JavaScipt
+          // purpose : Scripting language for Web
+          // developer : Netscape Corporation
+          // ----------
+          
+          function showStringProperties(curObj){
+                for (let key in curObj){
+                    if (typeof curObj[key] === "string"){
+                        console.log(key, ":", curObj[key]);
+                    }
+                }
+          }
+          showStringProperties(person);
+          showStringProperties(technology);
+
+          console.log("\nCau 4: So nguyen to")
+          function isPrimeNumber(number){
+            for (let i = 2; i< number; i++){
+                if (number % i == 0){
+                    return false;
+                }
+            }
+            return true;
+          }
+
+          function showPrimeNumbers(numberLimit) {
+            for (let curNum = 2; curNum <= numberLimit; curNum++) {
+              if (isPrimeNumber(curNum)) {
+                console.log("Số nguyên tố:", curNum);
+              }
+            }
+          }
+          
+          showPrimeNumbers(20); 
+          // ------------------------
+
+          console.log("\nCâu 05: 24-Hour Time");
+          console.log("Viết một hàm nhận thời gian ở định dạng AM/PM 12 giờ và trả về một chuỗi biểu diễn thời gian ở định dạng 24 giờ.");
+
+          function convertTime(string){
+            const time = string.slice(0, -2);
+            const ampm = string.slice(-2);
+            const units = time.split(":");
+
+            let hours = units[0];
+            const minutes = units[1];
+            const seconds = units[2];
+
+            if (hours === "12"){
+                hours = "00";
+            }
+
+            if (ampm === "PM"){
+                hours = parseInt(hours) + 12;
+            }
+
+            const newString = [hours, minutes, seconds].join(":");
+
+            return newString;
+          }
+
+            var test1 = convertTime("07:05:45PM");
+            console.log(test1); // 19:05:45
+
+    </script>
+</body>
+</html>
