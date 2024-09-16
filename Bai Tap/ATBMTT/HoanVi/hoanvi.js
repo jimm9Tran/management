@@ -1,42 +1,122 @@
-function generatePermutationKey() {
-    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
-    let shuffled = alphabet.split('');
+function permuteEncrypt(text, key){
+    const length = key.length;
+    let encryptedText = "";
 
-    // Hoán vị ngẫu nhiên các ký tự trong bảng chữ cái
-    for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // Hoán vị hai ký tự
+    // Padding nếu chiều dài văn bản không chia hết cho độ dài khóa
+    while (text.length % length !== 0){
+        text += ' ';
     }
 
-    return shuffled.join('');
-}
+    for (let i = 0; i < text.length; i += length) {
+        let block = text.slice(i, i + length);
+        let encryptedBlock = Array(length);
 
-function permutationEncrypt(text, key) {
-    const alphabetLower = 'abcdefghijklmnopqrstuvwxyz';
-    const alphabetUpper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    let encryptedText = '';
-
-    // Mã hóa từng ký tự trong văn bản đầu vào
-    for (let char of text) {
-        if (alphabetLower.includes(char)) { // Nếu là chữ thường
-            const index = alphabetLower.indexOf(char); // Tìm vị trí trong bảng chữ cái thường
-            encryptedText += key[index]; // Mã hóa với khóa hoán vị
-        } else if (alphabetUpper.includes(char)) { // Nếu là chữ hoa
-            const index = alphabetUpper.indexOf(char); // Tìm vị trí trong bảng chữ cái hoa
-            encryptedText += key[index].toUpperCase(); // Mã hóa với khóa hoán vị và chuyển sang chữ hoa
-        } else {
-            encryptedText += char; // Giữ nguyên ký tự không phải chữ cái
+        for (let j = 0; j < length; j++){
+            encryptedBlock[j] = block[key[j] - 1];
         }
+
+        encryptedText += encryptedBlock.join('');
     }
 
-    return encryptedText; // Trả về văn bản đã mã hóa
+    return encryptedText;
 }
 
-// Ví dụ sử dụng:
-const permutationKey = generatePermutationKey(); // Sinh ra một khóa hoán vị
-console.log('Khóa hoán vị:', permutationKey);
+function permuteDecrypt(encryptedText, key) {
+    const length = key.length;
+    let decryptedText = '';
 
-const originalText = "Hello World!";
-const encryptedText = permutationEncrypt(originalText, permutationKey);
-console.log('Văn bản gốc:', originalText);
-console.log('Văn bản đã mã hóa:', encryptedText);
+    for (let i = 0; i < encryptedText.length; i += length){
+        let block = encryptedText.slice(i, i + length);
+        let decryptedBlock = Array(length);
+
+        for (let j = 0; j < length; j++){
+            decryptedBlock[key[j] - 1] = block[j];
+        }
+
+        decryptedText += decryptedBlock.join('');
+    }
+
+    return decryptedText.trim(); // Xóa khoảng trắng nếu có
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const inputFile = document.getElementById('inputFile');
+    const inputText = document.getElementById('inputText');
+    const keyField = document.getElementById('key');
+    const encryptedText = document.getElementById('encryptedText');
+    const encryptButton = document.getElementById('encryptButton');
+    const resetButton = document.getElementById('resetButton');
+    const saveButton = document.getElementById('saveButton');
+    const messageDisplay = document.getElementById('message');
+
+    // Hàm đọc nội dung tệp
+    inputFile.addEventListener('change', async () => {
+        const file = inputFile.files[0];
+        if (file) {
+            try {
+                const content = await readFileContent(file);
+                inputText.value = content; // Hiển thị nội dung tệp vào ô văn bản
+            } catch (error) {
+                console.error("Error reading file:", error);
+            }
+        }
+    });
+
+    // Hàm mã hóa hoán vị
+    encryptButton.addEventListener('click', () => {
+        const text = inputText.value;
+        const keyString = keyField.value;
+        const key = keyString.split(',').map(Number); // Chuyển đổi khóa thành mảng các số
+        
+        if (!text || key.length === 0 || key.includes(NaN)) {
+            messageDisplay.textContent = "Vui lòng nhập văn bản và khóa hợp lệ.";
+            messageDisplay.style.color = 'red';
+            return;
+        }
+
+        const encrypted = permuteEncrypt(text, key);
+        encryptedText.value = encrypted;
+        messageDisplay.textContent = "Mã hóa thành công!";
+        messageDisplay.style.color = 'green';
+    });
+
+    // Hàm reset
+    resetButton.addEventListener('click', () => {
+        inputText.value = '';
+        keyField.value = '';
+        encryptedText.value = '';
+        messageDisplay.textContent = '';
+        inputFile.value = ''; // Xóa file input
+    });
+
+    // Hàm lưu bản mã
+    saveButton.addEventListener('click', () => {
+        if (encryptedText.value) {
+            saveToFile(encryptedText.value, 'encrypted.txt');
+            messageDisplay.textContent = "Lưu thành công!";
+            messageDisplay.style.color = 'green';
+        } else {
+            messageDisplay.textContent = "Không có bản mã để lưu.";
+            messageDisplay.style.color = 'red';
+        }
+    });
+});
+
+// Hàm đọc file
+function readFileContent(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (event) => resolve(event.target.result);
+        reader.onerror = (error) => reject(error);
+        reader.readAsText(file);
+    });
+}
+
+// Hàm lưu nội dung vào file
+function saveToFile(content, filename) {
+    const blob = new Blob([content], { type: 'text/plain' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+}
