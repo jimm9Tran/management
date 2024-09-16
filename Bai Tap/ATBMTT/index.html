@@ -3,46 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mã Hóa Caesar</title>
+    <title>Mã Hóa và Giải Mã</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Mã Hóa Caesar</h1>
-        <form class="form-container">
-            <div class="input-group">
-                <label for="inputText">Nhập văn bản:</label>
-                <textarea id="inputText" rows="3" placeholder="Nhập văn bản của bạn tại đây"></textarea>
-            </div>
-
-            <div class="input-group">
-                <label for="inputFile">Hoặc chọn tệp:</label>
-                <input type="file" id="inputFile" accept=".txt">
-            </div>
-
-            <div class="input-group">
-                <label for="key">Khóa (số):</label>
-                <input type="number" id="key" placeholder="Nhập khóa">
-            </div>
-
-            <div class="output-group">
-                <label for="encryptedText">Bảng mã:</label>
-                <textarea id="encryptedText" rows="3" readonly></textarea>
-            </div>
-
-            <div class="output-group">
-                <label for="decryptedText">Bảng rõ:</label>
-                <textarea id="decryptedText" rows="3" readonly></textarea>
-            </div>
-
-            <div class="button-group">
-                <button id="encryptButton" class="btn">Mã hóa</button>
-                <button id="decryptButton" class="btn">Giải mã</button>
-                <button id="resetButton" class="btn reset">Reset</button>
-            </div>
-        </form>
+    <div class="frame">
+        <h1>Mã Hóa và Giải Mã</h1>
+        <ul class="option-list">
+            <li><button class="option-btn" onclick="navigateTo('CaesarUpgrade/index.html')">Mã hóa Caesar</button></li>
+            <li><button class="option-btn" onclick="navigateTo('HoanVi/index.html')">Mã hóa Hoán vị</button></li>
+            <li><button class="option-btn" onclick="navigateTo('another_method.html')">Mã hóa Khác</button></li>
+        </ul>
     </div>
 
-    <script src="caesar.js"></script>
+    <script src="scripts.js"></script>
+    <script>
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+    </script>
 </body>
 </html>

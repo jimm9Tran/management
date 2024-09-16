@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="parent">
+        <div id="child1" class="child-1">
+            <div class="box">Box 1</div>
+            <div class="box">Box 2</div>
+            <div class="box">Box 3</div>
+        </div>
+        <div class="child-2">Child 2</div>
+        <div class="child-3">Child 3</div>
+    </div>
+
+    <script>
+        // DOM Navigation
+            //  Thể hiện mối quan hệ cha - con của các thẻ HTML
+            //  Các thuộc tính:
+            //  parentNode: Truy cập các phần tử cha.
+            //  childNodes: Truy cập vào các phần tử con.
+            //  firstElementChild: Truy cập vào các phần tử con đùa tiên.
+            //  lastElementChild: Truy cập vào phẩn tử con cuối cùng.
+            //  nextElementSibling: Truy cập vào phần tử kế tiếp.
+            //  previousElementSibling: Truy cập vào phần tử trước đó.
+            //  nodeName: Lấy ra tên node.
+
+        const child1 = document.querySelector("#child1");
+        console.log(child1);
+        console.log(child1.parentNode);
+        console.log(child1.childNodes);
+        console.log(child1.querySelectorAll(".box"));
+        console.log(child1.nextElementSibling);
+        console.log(child1.nextElementSibling.nextElementSibling);
+
+    </script>
+
+</body>
+</html>
