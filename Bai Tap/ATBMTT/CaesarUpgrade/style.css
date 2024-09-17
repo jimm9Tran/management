@@ -99,3 +99,17 @@ textarea[readonly] {
 .save {
     background-color: #046231;
 }
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none; /* Tắt tính năng thay đổi kích thước của textarea */
+    overflow-y: auto; /* Thêm thanh cuộn theo chiều dọc */
+    max-height: 150px; /* Giới hạn chiều cao của textarea */
+}
+
+.input-group, .output-group {
+    margin-bottom: 15px;
+}

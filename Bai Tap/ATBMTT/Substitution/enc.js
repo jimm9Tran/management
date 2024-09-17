@@ -1,11 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     const encryptButton = document.getElementById('encryptButton');
-    const decryptButton = document.getElementById('decryptButton');
     const resetButton = document.getElementById('resetButton');
     const inputTextField = document.getElementById('inputText');
     const keyField = document.getElementById('key'); // Thêm định nghĩa cho keyField
     const encryptedField = document.getElementById('encryptedText');
-    const decryptedField = document.getElementById('decryptedText');
     const fileInputField = document.getElementById('inputFile');
     const messageDisplay = document.getElementById('message');
     const saveButton = document.getElementById('saveButton');
@@ -93,20 +91,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function decryptText() {
-        const key = keyField.value;
-        const contentToDecrypt = inputTextField.value;
+    // function decryptText() {
+    //     const key = keyField.value;
+    //     const contentToDecrypt = inputTextField.value;
 
-        if (isValidKey(key)) {
-            const decryptedText = decryptSubstitution(contentToDecrypt, key);
-            decryptedField.value = decryptedText; // Hiển thị bản mã trong trường 'Bản rõ'
-            messageDisplay.textContent = 'Giải mã thành công!';
-            messageDisplay.style.color = 'green';
-        } else {
-            messageDisplay.textContent = 'Khóa không hợp lệ! Khóa phải có 26 ký tự duy nhất từ A-Z.';
-            messageDisplay.style.color = 'red';
-        } 
-    }
+    //     if (isValidKey(key)) {
+    //         const decryptedText = decryptSubstitution(contentToDecrypt, key);
+    //         decryptedField.value = decryptedText; // Hiển thị bản mã trong trường 'Bản rõ'
+    //         messageDisplay.textContent = 'Giải mã thành công!';
+    //         messageDisplay.style.color = 'green';
+    //     } else {
+    //         messageDisplay.textContent = 'Khóa không hợp lệ! Khóa phải có 26 ký tự duy nhất từ A-Z.';
+    //         messageDisplay.style.color = 'red';
+    //     } 
+    // }
 
     // Event handler for encrypt button
     encryptButton.addEventListener('click', (e) => {
@@ -114,10 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
         encryptText();
     });
 
-    decryptButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        decryptText();
-    })
+    // decryptButton.addEventListener('click', (e) => {
+    //     e.preventDefault();
+    //     decryptText();
+    // })
 
     // Event handler for reset button
     resetButton.addEventListener('click', (e) => {
