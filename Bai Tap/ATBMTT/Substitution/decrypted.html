@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giải Mã Thay Thế</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Giải Mã Thay Thế</h1>
+        <form class="form-container">
+            <div class="input-group">
+                <label for="inputFile">Hoặc chọn tệp:</label>
+                <input type="file" id="inputFile" accept=".txt">
+            </div>
+
+            <div class="input-group">
+                <textarea id="inputText" rows="5" placeholder="Nội dung trong tệp sẽ được hiển thị ở đây"></textarea>
+            </div>            
+
+            <div class="input-group">
+                <label for="key">Khóa (26 ký tự):</label>
+                <input type="text" id="key" placeholder="Nhập khóa gồm 26 ký tự từ A-Z">
+            </div>
+
+            <div class="output-group">
+                <label for="decryptedText">Bản Rõ:</label>
+                <textarea id="decryptedText" rows="5" readonly></textarea>
+            </div>
+            
+            <div class="button-group">
+                <button type="button" id="backButton" class="btn">Quay lại</button>
+                <button type="button" id="decryptButton" class="btn">Giải Mã</button>
+                <button type="button" id="resetButton" class="btn reset">Reset</button>
+                <button type="button" id="saveButton" class="btn save">Save</button>
+            </div>
+
+            <!-- Message display area -->
+            <div id="message" class="message"></div>
+        </form>
+    </div>
+
+    <script src="dec.js"></script>
+</body>
+</html>

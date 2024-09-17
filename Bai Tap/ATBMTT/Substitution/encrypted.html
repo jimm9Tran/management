@@ -3,25 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mã Hóa Hoán Vị</title>
+    <title>Mã Hóa Thay thế</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Mã Hóa Hoán Vị</h1>
+        <h1>Mã Hóa Thay Thế</h1>
         <form class="form-container">
             <div class="input-group">
-                <label for="inputFile">Chọn tệp văn bản:</label>
+                <label for="inputFile">Hoặc chọn tệp:</label>
                 <input type="file" id="inputFile" accept=".txt">
             </div>
 
             <div class="input-group">
-                <textarea id="inputText" rows="5" placeholder="Nhập văn bản hoặc nội dung trong tệp sẽ hiển thị ở đây"></textarea>
+                <textarea id="inputText" rows="5" placeholder="Nội dung trong tệp sẽ được hiển thị ở đây"></textarea>
             </div>            
 
+            <!-- Thay đổi khóa thành kiểu text và điều chỉnh nhãn -->
             <div class="input-group">
-                <label for="key">Khóa hoán vị (danh sách các số, cách nhau bằng dấu phẩy):</label>
-                <input type="text" id="key" placeholder="Nhập khóa (VD: 3,1,4,2)">
+                <label for="key">Khóa (26 ký tự):</label>
+                <input type="text" id="key" placeholder="Nhập khóa gồm 26 ký tự từ A-Z">
             </div>
 
             <div class="output-group">
@@ -33,19 +34,14 @@
                 <button type="button" id="backButton" class="btn">Quay lại</button>
                 <button type="button" id="encryptButton" class="btn">Mã hóa</button>
                 <button type="button" id="resetButton" class="btn reset">Reset</button>
-                <button type="button" id="saveButton" class="btn save">Lưu bản mã</button>
+                <button type="button" id="saveButton" class="btn save">Save</button>
             </div>
 
-            <!-- Khu vực hiển thị thông báo -->
+            <!-- Message display area -->
             <div id="message" class="message"></div>
         </form>
     </div>
 
-    <script src="hoanvi.js"></script>
-    <script>
-        document.getElementById('backButton').addEventListener('click', () => {
-            window.location.href = 'index.html';
-        })
-    </script>    
+    <script src="enc.js"></script>
 </body>
 </html>
