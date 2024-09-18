@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mã Hóa Caesar</title>
+    <title>Mã Hóa Thay thế</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Mã Hóa</h1>
+        <h1>Mã Hóa Thay Thế</h1>
         <form class="form-container">
             <div class="input-group">
                 <label for="inputFile">Hoặc chọn tệp:</label>
@@ -16,18 +16,18 @@
             </div>
 
             <div class="input-group">
-                <textarea id="inputText" rows="3" placeholder="Nội dung trong tệp sẽ được hiển thị ở đây"></textarea>
-                
+                <textarea id="inputText" rows="5" placeholder="Nội dung trong tệp sẽ được hiển thị ở đây"></textarea>
             </div>            
 
+            <!-- Thay đổi khóa thành kiểu text và điều chỉnh nhãn -->
             <div class="input-group">
-                <label for="key">Khóa (số):</label>
-                <input type="number" id="key" placeholder="Nhập khóa">
+                <label for="key">Khóa (26 ký tự):</label>
+                <input type="text" id="key" placeholder="Nhập khóa gồm 26 ký tự từ A-Z">
             </div>
 
             <div class="output-group">
                 <label for="encryptedText">Bản mã:</label>
-                <textarea id="encryptedText" rows="3" readonly></textarea>
+                <textarea id="encryptedText" rows="5" readonly></textarea>
             </div>
             
             <div class="button-group">
@@ -42,7 +42,6 @@
         </form>
     </div>
 
-    <script src="caesar.js"></script>
     <script src="enc.js"></script>
 </body>
 </html>
