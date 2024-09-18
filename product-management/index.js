@@ -9,7 +9,6 @@ const routeAdmin = require("./routers/admin/index.route");
 
 const app = express()
 const port = process.env.PORT;
-const systemConfig = require("./config/system");
 app.set("views", "./view");
 app.set("view engine", "pug");
 
