@@ -2,7 +2,6 @@ const Products = require("../../models/product.model");
 const searchHelper = require("../../helpers/search");
 
 module.exports.index = async (req, res) => {
-    console.log(req.query.status);
     let find =  {
 
     }
@@ -21,17 +20,37 @@ module.exports.index = async (req, res) => {
         //     find.title = regex;
         // }
     const objectSearch = searchHelper(req.query);
-    // console.log(objectSearch);
     if (objectSearch.regex){
         find.title = objectSearch.regex;
     }
-     
+    // End Search
+    
+    // Pagination
 
-    const products = await Products.find(find);
+    let objectPagination = {
+        limitItems: 5,
+        currentPage: 1
+    }
+
+    if (req.query.page){
+        objectPagination.currentPage = parseInt(req.query.page);
+    }
+
+    objectPagination.skip = (objectPagination.currentPage-1)*objectPagination.limitItems;
+    
+    const countProducts = await Products.countDocuments(find) 
+    const totalPage = Math.ceil(countProducts/objectPagination.limitItems);
+    objectPagination.totalPage = totalPage;
+    // End Pagination
+
+    const products = await Products.find(find)
+    .limit(objectPagination.limitItems)
+    .skip(objectPagination.currentPage);
 
     res.render("admin/pages/products/index", {
         pageTitle: "Trang Sản Phẩm",
         products: products,
-        keyword: objectSearch.keyword
+        keyword: objectSearch.keyword,
+        pagination: objectPagination
     });
 };
