@@ -13,15 +13,15 @@ module.exports.index = async (req, res) => {
     
 
     // Search
-    // let keyword = "";
+        // let keyword = "";
 
-    // if (req.query.keyword){
-    //     keyword = req.query.keyword; 
-    //     const regex = new RegExp(keyword, "i");
-    //     find.title = regex;
-    // }
+        // if (req.query.keyword){
+        //     keyword = req.query.keyword; 
+        //     const regex = new RegExp(keyword, "i");
+        //     find.title = regex;
+        // }
     const objectSearch = searchHelper(req.query);
-    console.log(objectSearch);
+    // console.log(objectSearch);
     if (objectSearch.regex){
         find.title = objectSearch.regex;
     }

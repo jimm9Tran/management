@@ -1,4 +1,5 @@
 extends ../../layouts/default.pug
+include ../../mixins/search.pug
 
 block main
     h1 Trang quản lý sản phẩm 
@@ -16,10 +17,8 @@ block main
                 class="btn btn-sm ml-1 btn-outline-success"
             ) Dừng hoạt động
 
-            form(id="form-search")
-                .input-group
-                    input.form-control(type="text", name="keyword", placeholder="Tìm kiếm sản phẩm...", value=keyword)
-                    button.btn.btn-outline-primary(type="submit") Tìm kiếm    
+            +search(keyword)
+            
                     
 
     .card.mb-3
