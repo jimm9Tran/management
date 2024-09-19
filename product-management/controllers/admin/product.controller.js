@@ -25,7 +25,7 @@ module.exports.index = async (req, res) => {
     ]
 
     let find =  {
-
+        deleted: false
     }
 
     if (req.query.status){
@@ -63,7 +63,7 @@ module.exports.index = async (req, res) => {
 
     const products = await Products.find(find)
     .limit(objectPagination.limitItems)
-    .skip(objectPagination.currentPage);
+    .skip((objectPagination.currentPage - 1) * objectPagination.limitItems);
 
     res.render("admin/pages/products/index", {
         pageTitle: "Trang Sản Phẩm",

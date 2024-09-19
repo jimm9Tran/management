@@ -22,7 +22,8 @@ const productSchema = new mongoose.Schema({
     meta: Object,
     images: [String],
     thumbnail: String,
-    deleted: Boolean
+    deleted: Boolean,
+    status: String
 });
 
 const Product = mongoose.model("Products", productSchema, "products");

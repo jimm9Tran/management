@@ -1,11 +1,10 @@
 // Buttom Status
-
 const buttonStatus = document.querySelectorAll("[button-status]");
-if (buttonStatus.length>0){
+if (buttonStatus.length > 0){
     let url = new URL(window.location.href);
 
     buttonStatus.forEach(button => {
-        button.addEventListener('click', () => {
+        button.addEventListener("click", () => {
             const status = button.getAttribute("button-status");
             
             if (status){    
