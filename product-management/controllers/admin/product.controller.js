@@ -10,7 +10,7 @@ module.exports.index = async (req, res) => {
         {
             name: "Tất cả",
             status: "",
-            class: "active"
+            class: ""
         },
         {
             name: "Hoạt động",
@@ -27,15 +27,16 @@ module.exports.index = async (req, res) => {
     let find =  {
 
     }
+
     if (req.query.status){
         find.status = req.query.status;
     }
 
     if (req.query.status){
-        const index = fillterStatus.findIndex(iten => item.status = req.query.status);
+        const index = fillterStatus.findIndex(item => item.status == req.query.status);
         fillterStatus[index].class = "active";
-    }{
-        const index = fillterStatus.findIndex(iten => item.status = "");
+    }else{
+        const index = fillterStatus.findIndex(item => item.status == "");
         fillterStatus[index].class = "active";
     }
 
