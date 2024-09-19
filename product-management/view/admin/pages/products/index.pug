@@ -1,4 +1,6 @@
 extends ../../layouts/default.pug
+include ../../mixins/search.pug
+include ../../mixins/pagination.pug
 
 block main
     h1 Trang quản lý sản phẩm 
@@ -16,10 +18,8 @@ block main
                 class="btn btn-sm ml-1 btn-outline-success"
             ) Dừng hoạt động
 
-            form(id="form-search")
-                .input-group
-                    input.form-control(type="text", name="keyword", placeholder="Tìm kiếm sản phẩm...", value=keyword)
-                    button.btn.btn-outline-primary(type="submit") Tìm kiếm    
+            +search(keyword)
+            
                     
 
     .card.mb-3
@@ -52,15 +52,4 @@ block main
                                 button(class="btn btn-warning btn-sm") Sửa
                                 button(class="btn btn-danger btn-sm ml-1") Xóa
 
-    nav
-        ul(class="pagination")
-            li(class="page-item")
-            button(class="page-link") Trang trước
-            li(class="page-item")
-            button(class="page-link") 1
-            li(class="page-item active")
-            button(class="page-link") 2
-            li(class="page-item")
-            button(class="page-link") 3
-            li(class="page-item")
-            button(class="page-link") Kế tiếp
+    +pagination(pagination)
