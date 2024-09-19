@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mã Hóa Affine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Mã Hóa Affine</h1>
+        <form class="form-container">
+            <!-- Nhóm nhập tệp -->
+            <div class="input-group">
+                <label for="inputFile">Hoặc chọn tệp:</label>
+                <input type="file" id="inputFile" accept=".txt">
+            </div>
+
+            <!-- Nhóm nhập văn bản -->
+            <div class="input-group">
+                <textarea id="inputText" rows="5" placeholder="Nhập nội dung cần mã hóa hoặc chọn tệp để hiển thị nội dung ở đây"></textarea>
+            </div>            
+
+            <!-- Nhóm nhập khóa a -->
+            <div class="input-group">
+                <label for="keyA">Khóa a:</label>
+                <select id="keyA" required>
+                    <option value="" disabled selected>Chọn khóa a</option>
+                    <option value="1">1</option>
+                    <option value="3">3</option>
+                    <option value="5">5</option>
+                    <option value="7">7</option>
+                    <option value="9">9</option>
+                    <option value="11">11</option>
+                    <option value="15">15</option>
+                    <option value="17">17</option>
+                    <option value="19">19</option>
+                    <option value="21">21</option>
+                    <option value="23">23</option>
+                    <option value="25">25</option>
+                </select>
+            </div>
+
+            <!-- Nhóm nhập khóa b -->
+            <div class="input-group">
+                <label for="keyB">Khóa b (số):</label>
+                <input type="number" id="keyB" placeholder="Nhập khóa b" required>
+            </div>
+
+            <!-- Nhóm hiển thị bản mã -->
+            <div class="output-group">
+                <label for="encryptedText">Bản mã:</label>
+                <textarea id="encryptedText" rows="5" readonly></textarea>
+            </div>
+            
+            <!-- Nhóm các nút điều khiển -->
+            <div class="button-group">
+                <button type="button" id="backButton" class="btn">Quay lại</button>
+                <button type="button" id="encryptButton" class="btn">Mã hóa</button>
+                <button type="button" id="resetButton" class="btn reset">Reset</button>
+                <button type="button" id="saveButton" class="btn save">Lưu</button>
+            </div>
+
+            <!-- Khu vực hiển thị thông báo -->
+            <div id="message" class="message"></div>
+        </form>
+    </div>
+
+    <!-- Liên kết đến tệp JavaScript phù hợp với mã hóa Affine -->
+    <script src="enc.js "></script>
+    <script src="affine.js"></script>
+</body>
+</html>

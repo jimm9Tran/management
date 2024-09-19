@@ -1,159 +1,96 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const encryptButton = document.getElementById('encryptButton');
-    const resetButton = document.getElementById('resetButton');
-    const inputTextField = document.getElementById('inputText');
-    const keyField = document.getElementById('key'); // Thêm định nghĩa cho keyField
-    const encryptedField = document.getElementById('encryptedText');
-    const fileInputField = document.getElementById('inputFile');
-    const messageDisplay = document.getElementById('message');
-    const saveButton = document.getElementById('saveButton');
+// Khi nhấn nút "Mã hóa"
+document.getElementById('encryptButton').addEventListener('click', encryptText);
+// Khi nhấn nút "Sinh khóa tự động"
+document.getElementById('generateKeyEncryptButton').addEventListener('click', generateAndDisplayKeyEncrypt);
+// Khi nhấn nút "Reset"
+document.getElementById('resetEncryptButton').addEventListener('click', resetFormEncrypt);
+// Khi nhấn nút "Save"
+document.getElementById('saveEncryptButton').addEventListener('click', saveToFile);
 
-    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+// Hàm sinh khóa ngẫu nhiên cho mã hóa
+function generateRandomKey() {
+    let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let shuffledAlphabet = alphabet.split('').sort(() => Math.random() - 0.5).join('');
+    return shuffledAlphabet;
+}
 
-    // Function to read file content
-    function readFileContent(file) {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onload = (event) => resolve(event.target.result);
-            reader.onerror = (error) => reject(error);
-            reader.readAsText(file);
-        });
+// Hàm hiển thị khóa ngẫu nhiên trong mã hóa
+function generateAndDisplayKeyEncrypt() {
+    const randomKey = generateRandomKey();
+    document.getElementById('keyEncrypt').value = randomKey;
+    document.getElementById('message').textContent = "Khóa ngẫu nhiên đã được sinh!";
+}
+
+// Hàm mã hóa
+function encryptText() {
+    const inputText = document.getElementById('inputTextEncrypt').value.toUpperCase();
+    let key = document.getElementById('keyEncrypt').value.toUpperCase();
+    const messageDiv = document.getElementById('message');
+
+    // Kiểm tra tính hợp lệ của khóa
+    if (key === "" || key.length !== 26) {
+        messageDiv.textContent = "Khóa phải gồm đúng 26 ký tự.";
+        return;
     }
 
-    // Event handler for file input change
-    fileInputField.addEventListener('change', async () => {
-        const file = fileInputField.files[0];
-        if (file) {
-            try {
-                const content = await readFileContent(file);
-                inputTextField.value = content;
-            } catch (error) {
-                console.error(error);
-            }
-        }
-    });
+    // Bảng thay thế mã hóa
+    let substitution = {};
+    let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    // Substitution cipher encryption
-    function encryptSubstitution(text, substitutionKey) {
-        let encryptedText = '';
-        text = text.toUpperCase();
-        substitutionKey = substitutionKey.toUpperCase();
-
-        for (let i = 0; i < text.length; i++) {
-            let char = text[i];
-            if (alphabet.includes(char)) {
-                let index = alphabet.indexOf(char);
-                encryptedText += substitutionKey[index];
-            } else {
-                encryptedText += char; // Giữ nguyên ký tự không phải chữ cái
-            }
-        }
-        return encryptedText;
+    for (let i = 0; i < 26; i++) {
+        substitution[alphabet[i]] = key[i];
     }
 
-    // Substitution cipher decryption
-    function decryptSubstitution(encryptedText, substitutionKey) {
-        let decryptedText = '';
-        substitutionKey = substitutionKey.toUpperCase();
-
-        for (let i = 0; i < encryptedText.length; i++) {
-            let char = encryptedText[i];
-            if (substitutionKey.includes(char)) {
-                let index = substitutionKey.indexOf(char);
-                decryptedText += alphabet[index];
-            } else {
-                decryptedText += char; // Giữ nguyên ký tự không phải chữ cái
-            }
-        }
-        return decryptedText;
-    }
-
-    // Function to validate substitution key
-    function isValidKey(key) {
-        if (key.length !== 26) return false; // Khóa phải có 26 ký tự
-        const uniqueChars = new Set(key.toUpperCase());
-        return uniqueChars.size === 26; // Đảm bảo không có ký tự trùng lặp
-    }
-
-    // Function to encrypt the text
-    function encryptText() {
-        const key = keyField.value;
-        const contentToEncrypt = inputTextField.value;
-
-        if (isValidKey(key)) {
-            const encryptedText = encryptSubstitution(contentToEncrypt, key);
-            encryptedField.value = encryptedText; // Hiển thị bản mã trong trường 'Bản mã'
-            messageDisplay.textContent = 'Mã hóa thành công!';
-            messageDisplay.style.color = 'green';
+    // Mã hóa văn bản
+    let encryptedText = '';
+    for (let char of inputText) {
+        if (alphabet.includes(char)) {
+            encryptedText += substitution[char];
         } else {
-            messageDisplay.textContent = 'Khóa không hợp lệ! Khóa phải có 26 ký tự duy nhất từ A-Z.';
-            messageDisplay.style.color = 'red';
+            encryptedText += char; // Giữ nguyên nếu không phải là chữ cái
         }
     }
 
-    // function decryptText() {
-    //     const key = keyField.value;
-    //     const contentToDecrypt = inputTextField.value;
+    document.getElementById('encryptedText').value = encryptedText;
+    messageDiv.textContent = "Mã hóa thành công!";
+}
 
-    //     if (isValidKey(key)) {
-    //         const decryptedText = decryptSubstitution(contentToDecrypt, key);
-    //         decryptedField.value = decryptedText; // Hiển thị bản mã trong trường 'Bản rõ'
-    //         messageDisplay.textContent = 'Giải mã thành công!';
-    //         messageDisplay.style.color = 'green';
-    //     } else {
-    //         messageDisplay.textContent = 'Khóa không hợp lệ! Khóa phải có 26 ký tự duy nhất từ A-Z.';
-    //         messageDisplay.style.color = 'red';
-    //     } 
-    // }
+// Hàm reset form
+function resetFormEncrypt() {
+    document.getElementById('inputTextEncrypt').value = '';
+    document.getElementById('keyEncrypt').value = '';
+    document.getElementById('encryptedText').value = '';
+    document.getElementById('message').textContent = '';
+}
 
-    // Event handler for encrypt button
-    encryptButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        encryptText();
-    });
+// Hàm lưu file với tên do người dùng tự chọn, có thể chọn đường dẫn và xóa file gốc nếu muốn
+function saveToFile() {
+    let content = document.getElementById('encryptedText').value;
 
-    // decryptButton.addEventListener('click', (e) => {
-    //     e.preventDefault();
-    //     decryptText();
-    // })
-
-    // Event handler for reset button
-    resetButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        inputTextField.value = '';
-        keyField.value = '';
-        encryptedField.value = '';
-        fileInputField.value = '';
-        messageDisplay.textContent = '';
-    });
-
-    // Function to save to file
-    function saveToFile(content, filename = 'encrypted_text.txt') {
-        const blob = new Blob([content], { type: 'text/plain' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = filename;
-        a.click();
-        URL.revokeObjectURL(url);
+    // Kiểm tra xem nội dung cần lưu có rỗng không
+    if (!content) {
+        document.getElementById('message').textContent = "Không có gì để lưu.";
+        return;
     }
 
-    // Event handler for saving
-    saveButton.addEventListener('click', () => {
-        if (encryptedField.value) {
-            saveToFile(encryptedField.value);
-            messageDisplay.textContent = 'Lưu thành công!';
-            messageDisplay.style.color = 'green';
-        } else {
-            messageDisplay.textContent = 'Không có nội dung để lưu!';
-            messageDisplay.style.color = 'red';
-        }
-    });
+    // Hộp thoại để người dùng nhập tên file và chọn đường dẫn lưu
+    const fileName = prompt("Nhập tên file (bao gồm đuôi .txt):", "output.txt");
+    if (fileName === null || fileName.trim() === "") {
+        document.getElementById('message').textContent = "Hủy lưu file.";
+        return;
+    }
 
-    
-});
+    // Tạo đối tượng Blob để lưu file
+    const blob = new Blob([content], { type: 'text/plain' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = fileName;
+    link.click();
 
-    // Back button handler
-document.getElementById('backButton').addEventListener('click', function () {
-    window.location.href = 'index.html';
-});
+    // Tùy chọn xóa file gốc
+    const deleteOriginal = confirm("Bạn có muốn xóa văn bản gốc chưa mã hóa không?");
+    if (deleteOriginal) {
+        document.getElementById('inputTextEncrypt').value = '';
+        document.getElementById('message').textContent = "Văn bản gốc đã được xóa.";
+    }
+}

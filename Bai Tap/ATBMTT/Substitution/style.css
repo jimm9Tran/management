@@ -99,3 +99,93 @@ textarea[readonly] {
 .save {
     background-color: #046231;
 }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    max-width: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.input-group,
+.output-group,
+.button-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+textarea,
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+textarea {
+    resize: none;
+}
+
+.btn {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+.btn.reset {
+    background-color: #f0ad4e;
+}
+
+.btn.save {
+    background-color: #5cb85c;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.message {
+    text-align: center;
+    color: #ff0000;
+}
+
+.small-btn {
+    padding: 5px 10px;
+    margin-left: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.small-btn:hover {
+    opacity: 0.8;
+}

@@ -1,0 +1,565 @@
+/* style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f9;
+}
+
+.container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group, .output-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 14px;
+    color: #555555;
+    margin-bottom: 5px;
+    display: block;
+}
+
+textarea, input[type="number"], input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-top: 5px;
+    transition: border-color 0.3s ease;
+}
+
+textarea:focus, input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+textarea[readonly] {
+    background-color: #f9f9f9;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.reset {
+    background-color: #dc3545;
+}
+
+.reset:hover {
+    background-color: #c82333;
+}
+
+.save {
+    background-color: #046231;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none; /* Tắt tính năng thay đổi kích thước của textarea */
+    overflow-y: auto; /* Thêm thanh cuộn theo chiều dọc */
+    max-height: 150px; /* Giới hạn chiều cao của textarea */
+}
+
+.input-group, .output-group {
+    margin-bottom: 15px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    max-width: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.input-group,
+.output-group,
+.button-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+textarea,
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+textarea {
+    resize: none;
+}
+
+.btn {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+.btn.reset {
+    background-color: #f0ad4e;
+}
+
+.btn.save {
+    background-color: #5cb85c;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.message {
+    text-align: center;
+    color: #ff0000;
+}
+
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333333;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group, .output-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label, .output-group label {
+    margin-bottom: 5px;
+    color: #555555;
+}
+
+.input-group input[type="file"],
+.input-group input[type="number"],
+.input-group textarea {
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.input-group input[type="number"]:invalid {
+    border-color: red;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    flex: 1 1 45%;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+.btn.reset {
+    background-color: #f44336;
+}
+
+.btn.reset:hover {
+    background-color: #da190b;
+}
+
+.btn.save {
+    background-color: #008CBA;
+}
+
+.btn.save:hover {
+    background-color: #007bb5;
+}
+
+.btn.back {
+    background-color: #555555;
+}
+
+.btn.back:hover {
+    background-color: #333333;
+}
+
+.message {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 4px;
+    display: none;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+@media (max-width: 600px) {
+    .button-group {
+        flex-direction: column;
+    }
+
+    .btn {
+        flex: 1 1 100%;
+        margin-right: 0;
+    }
+}
+
+/* Thêm kiểu cho select */
+.input-group select {
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 16px;
+    appearance: none;
+    background-color: #ffffff;
+}
+
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333333;
+}
+
+form.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.cipher-section {
+    margin-bottom: 30px;
+}
+
+.cipher-section h2 {
+    color: #444444;
+    margin-bottom: 15px;
+}
+
+.input-group, .output-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label, .output-group label {
+    margin-bottom: 5px;
+    color: #555555;
+    display: flex;
+    align-items: center;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    color: #555555;
+    margin-left: 5px;
+}
+
+.tooltip::after {
+    content: attr(title);
+    position: absolute;
+    left: 50%;
+    bottom: 125%; /* Vị trí trên label */
+    transform: translateX(-50%);
+    background-color: #333333;
+    color: #ffffff;
+    padding: 5px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 1;
+}
+
+.tooltip:hover::after {
+    opacity: 1;
+}
+
+.key-input {
+    display: flex;
+    align-items: center;
+}
+
+.key-input select,
+.key-input input {
+    flex: 1;
+}
+
+.key-input .generate {
+    margin-left: 10px;
+    background-color: #6c757d;
+}
+
+.key-input .generate:hover {
+    background-color: #5a6268;
+}
+
+.input-group select,
+.input-group input[type="number"],
+.input-group textarea {
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input-group input[type="number"]::-webkit-inner-spin-button, 
+.input-group input[type="number"]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+
+.input-group input[type="number"] {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input-group select:invalid {
+    border-color: red;
+}
+
+.field-message {
+    color: #d9534f; /* Màu đỏ cho lỗi */
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+.field-message.success {
+    color: #5cb85c; /* Màu xanh cho thành công */
+    display: block;
+}
+
+.field-message.error {
+    color: #d9534f; /* Màu đỏ cho lỗi */
+    display: block;
+}
+
+.helper-text {
+    color: #777;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.output-group textarea {
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 16px;
+    resize: vertical;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    flex: 1 1 45%;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+.btn.reset {
+    background-color: #f44336;
+}
+
+.btn.reset:hover {
+    background-color: #da190b;
+}
+
+.btn.save {
+    background-color: #008CBA;
+}
+
+.btn.save:hover {
+    background-color: #007bb5;
+}
+
+.btn.generate {
+    background-color: #6c757d;
+    color: white;
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+.btn.generate:hover {
+    background-color: #5a6268;
+}
+
+.message {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 4px;
+    display: none;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+@media (max-width: 800px) {
+    .button-group {
+        flex-direction: column;
+    }
+
+    .btn {
+        flex: 1 1 100%;
+        margin-right: 0;
+    }
+}
