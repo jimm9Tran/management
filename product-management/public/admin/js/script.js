@@ -61,3 +61,14 @@ if (buttonsPagination){
 }
 
 // EndPagination
+
+
+// Check Box Multi
+
+const checkBoxMulti = document.querySelectorAll("[checkbox-multi]");
+if (checkBoxMulti){
+    const inputCheckAll = checkBoxMulti.querySelector("input[name'checkall]");
+    console.log(inputCheckAll);
+}
+
+// End Check Box Multi

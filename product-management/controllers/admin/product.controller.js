@@ -74,7 +74,7 @@ module.exports.index = async (req, res) => {
     });
 };
 
-// [GET] //admin/products/change-status/:status:/id
+// [PATCH] //admin/products/change-status/:status:/id
 module.exports.changeStatus = async (req, res) => {
     const status = req.params.status;
     const id = req.params.id;
@@ -83,4 +83,11 @@ module.exports.changeStatus = async (req, res) => {
 
 
     res.redirect("back");
+}
+
+// [PATCH] //admin/products/change-multi
+module.exports.changeMulti = async (req, res) => {
+    console.log(req.body);  // Kiểm tra dữ liệu nhận từ form
+    
+    res.send("OK");
 }
