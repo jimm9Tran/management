@@ -83,11 +83,26 @@ module.exports.changeStatus = async (req, res) => {
 
 
     res.redirect("back");
+
 }
 
 // [PATCH] //admin/products/change-multi
 module.exports.changeMulti = async (req, res) => {
-    console.log(req.body);  // Kiểm tra dữ liệu nhận từ form
+    const type = req.body.type;
+    const ids = req.body.ids.split(", ");
     
-    res.send("OK");
+    switch(type){
+        case "active":
+            await Products.updateMany({_id: { $in: ids }}, {status: "active"});
+            break;
+
+        case "inactive":
+            await Products.updateMany({_id: { $in: ids }}, {status: "inactive"});
+            break;
+        
+        default:
+            break;
+    }
+
+    res.redirect("back");
 }
