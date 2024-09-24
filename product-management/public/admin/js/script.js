@@ -67,7 +67,6 @@ if (buttonsPagination){
 
 const checkBoxMulti = document.querySelector("[checkbox-multi]");
 if (checkBoxMulti){
-    console.log(checkBoxMulti);
     const inputCheckAll = checkBoxMulti.querySelector("input[name='checkall']");
     const inputsId = checkBoxMulti.querySelectorAll("input[name='id']");
     
@@ -129,3 +128,4 @@ if (formChangeMulti) {
 }
 
 // End Form Change Multi
+
