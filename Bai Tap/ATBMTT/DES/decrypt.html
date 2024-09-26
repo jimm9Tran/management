@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DES Decryption Tool</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>DES Decryption Tool</h1>
+      <nav>
+        <a href="encrypt.html">Mã Hóa</a>
+      </nav>
+    </header>
+    
+    <section id="main-content">
+
+      <label for="inputFile">Hoặc chọn tệp:</label>
+      <input type="file" id="inputFile" accept=".txt">
+      
+      <label for="inputText">Dữ liệu đầu vào:</label>
+      <textarea id="inputText" rows="5" placeholder="Nhập dữ liệu để giải mã"></textarea>
+
+      <label for="key">Khóa (8 ký tự):</label>
+      <div>
+        <input id="key" maxlength="8" placeholder="Nhập khóa 8 ký tự">
+        <button type="button" onclick="generateRandomKey()">Tạo khóa ngẫu nhiên</button>
+      </div>
+
+      <label for="outputText">Dữ liệu giải mã:</label>
+      <textarea id="outputText" rows="5" readonly></textarea>
+
+      <button onclick="decryptDES()">Giải mã</button>
+      <button onclick="resetForm()">Reset</button>
+      <button onclick="saveFile()">Lưu dữ liệu mã hóa</button>
+
+      
+    </section>
+
+    <footer>
+      <p>&copy; 2024 DES Encryption/Decryption Tool</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
