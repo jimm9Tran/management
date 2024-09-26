@@ -27,6 +27,29 @@ const productSchema = new mongoose.Schema({
     deleteAt: Date
 });
 
+
+// const Product = mongoose.model('Product', productSchema);
+
 const Product = mongoose.model("Products", productSchema, "products");
+
+
+async function updateProductPositions() {
+    try {
+        // Lấy danh sách sản phẩm, sắp xếp theo trường bạn muốn (ví dụ: theo createdAt)
+        const products = await Product.find().sort({ createdAt: 1 });
+
+        // Sử dụng vòng lặp để cập nhật từng sản phẩm với trường position
+        for (let i = 0; i < products.length; i++) {
+            await Product.updateOne(
+                { _id: products[i]._id },  // Điều kiện để tìm sản phẩm
+                { $set: { position: i + 1 } }  // Cập nhật trường position
+            );
+        }
+
+        // console.log('Cập nhật position thành công!');
+    } catch (error) {
+        // console.error('Lỗi khi cập nhật position:', error);
+    }
+}
 
 module.exports = Product;

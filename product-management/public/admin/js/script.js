@@ -114,7 +114,7 @@ if (formChangeMulti) {
         if (typeChange == "delete-all") {
             const isConfirm = confirm("bạn có chắc muốn xóa những sản phẩm này không");
 
-            if (!isConfirm){
+            if (!isConfirm) {
                 return;
             }
         }
