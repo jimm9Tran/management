@@ -51,7 +51,7 @@ module.exports.index = async (req, res) => {
 
     let objectPagination = paginationHelper(
         {
-            limitItems: 5,
+            limitItems: 10,
             currentPage: 1
         },
         req.query,
@@ -62,8 +62,9 @@ module.exports.index = async (req, res) => {
     // End Pagination
 
     const products = await Products.find(find)
-    .limit(objectPagination.limitItems)
-    .skip((objectPagination.currentPage - 1) * objectPagination.limitItems);
+        .sort({position: "desc"})
+        .limit(objectPagination.limitItems)
+        .skip((objectPagination.currentPage - 1) * objectPagination.limitItems);
 
     res.render("admin/pages/products/index", {
         pageTitle: "Trang Sản Phẩm",
@@ -101,10 +102,28 @@ module.exports.changeMulti = async (req, res) => {
             break;
         
         case "delete-all":
-            await Products.updateMany({_id: { $in: ids }}, {
-                deleted: true, 
-                deleteAt: new Date()
+            await Products.updateMany({_id: { $in: ids }}, 
+                {
+                    deleted: true, 
+                    deleteAt: new Date()
                 });
+            break;
+        
+        case "change-position":
+            for (const item of ids){
+                let [id, position] = item.split("-");
+                position = parseInt(position);
+                console.log(id);
+                console.log(position);
+
+                await Products.updateOne({ _id: id },
+                    {position: position}
+                );
+            }
+            // await Products.updateMany({_id: { $in: ids }}, {
+            //     deleted: true, 
+            //     deleteAt: new Date()
+            //     });
             break;
 
         default:

@@ -1,8 +1,9 @@
+let url = new URL(window.location.href);
+
 // Buttom Status
 const buttonStatus = document.querySelectorAll("[button-status]");
 if (buttonStatus.length > 0){
-    let url = new URL(window.location.href);
-
+    // let url = new URL(window.location.href);
     buttonStatus.forEach(button => {
         button.addEventListener("click", () => {
             const status = button.getAttribute("button-status");
@@ -20,11 +21,9 @@ if (buttonStatus.length > 0){
 // End Bottom Status
 
 // From Search
-
 const formSearch = document.querySelector("#form-search");
-if (formSearch){
-    let url = new URL(window.location.href);
-
+if (formSearch) {
+    // let url = new URL(window.location.href);
     formSearch.addEventListener("submit", (e) => {
         e.preventDefault();
         const keyword = e.target.elements.keyword.value;
@@ -38,35 +37,26 @@ if (formSearch){
         window.location.href = url.href;
     });
 }
-
-
 // End Form Search
 
 // Pagination
 const buttonsPagination = document.querySelectorAll("[button-pagination]");
-// console.log(buutonPagination);
-if (buttonsPagination){
-    let url = new URL(window.location.href);
-
+if (buttonsPagination > 0) {
+    // let url = new URL(window.location.href);
     buttonsPagination.forEach(button => {
         button.addEventListener("click", () => {
             const page = button.getAttribute("button-pagination");
-            // console.log(page);
-            
             url.searchParams.set("page", page);
-            window.location.href = url.href;
-            
+            window.location.href = url.href;  
         });
     })
 }
-
 // EndPagination
 
 
 // Check Box Multi
-
 const checkBoxMulti = document.querySelector("[checkbox-multi]");
-if (checkBoxMulti){
+if (checkBoxMulti) {
     const inputCheckAll = checkBoxMulti.querySelector("input[name='checkall']");
     const inputsId = checkBoxMulti.querySelectorAll("input[name='id']");
     
@@ -95,7 +85,6 @@ if (checkBoxMulti){
     });
 
 }
-
 // End Check Box Multi
 
 
@@ -105,7 +94,6 @@ if (formChangeMulti) {
     formChangeMulti.addEventListener("submit", (e) => {
         e.preventDefault();
         
-
         const checkBoxMulti = document.querySelector("[checkbox-multi]");
         const inputsChecked = checkBoxMulti.querySelectorAll("input[name='id']:checked");
         
@@ -125,17 +113,21 @@ if (formChangeMulti) {
 
             inputsChecked.forEach((input) => {
                 const id = input.value;
-                ids.push(id);
-            })
+
+                if (typeChange == "change-position") {
+                    const position = input.closest("tr").querySelector("input[name='position']").value;
+                    ids.push(`${id}-${position}`);
+                }else {
+                    ids.push(id);
+                }                
+            });
 
             inputIds.value =  ids.join(", ");
-
             formChangeMulti.submit();
         }else {
             alert("Vui long chon it nhat mot ban ghi!!!");
         }
     }); 
 }
-
 // End Form Change Multi
 
