@@ -229,3 +229,32 @@ module.exports.editPatch = async (req, res) => {
 
     res.redirect("back");
 };
+
+
+// [GET] //admin/products/detail/:id
+module.exports.detail = async (req, res) => {
+    try {
+        // Search for product by ID
+        const product = await Products.findOne({ 
+            _id: req.params.id, 
+            deleted: false 
+        });
+
+        // If product is not found, handle it
+        if (!product) {
+            req.flash('error', 'Sản phẩm không tồn tại.');
+            return res.redirect(`${systemConfig.prefixAmin}/products`);
+        }
+
+        // Render product details
+        res.render("admin/pages/products/detail", {
+            pageTitle: `Chi tiết sản phẩm: ${product.title}`,
+            product: product
+        });
+        
+    } catch (error) {
+        console.error("Error fetching product details:", error);
+        req.flash('error', 'Đã xảy ra lỗi khi lấy thông tin sản phẩm.');
+        return res.redirect(`${systemConfig.prefixAmin}/products`);
+    }
+};
