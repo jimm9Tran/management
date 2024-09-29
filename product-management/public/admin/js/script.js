@@ -41,7 +41,7 @@ if (formSearch) {
 
 // Pagination
 const buttonsPagination = document.querySelectorAll("[button-pagination]");
-if (buttonsPagination > 0) {
+if (buttonsPagination.length > 0) {
     // let url = new URL(window.location.href);
     buttonsPagination.forEach(button => {
         button.addEventListener("click", () => {
