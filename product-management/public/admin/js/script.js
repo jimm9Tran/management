@@ -165,3 +165,15 @@ if (uploadImage) {
 }
 
 // End Upload Image
+
+// slider
+const toggleBtn = document.querySelector('.sider-toggle-btn');
+const sider = document.querySelector('.sider');
+const container = document.querySelector('.container');
+
+toggleBtn.addEventListener('click', () => {
+  sider.classList.toggle('collapsible');
+});
+
+
+// slider

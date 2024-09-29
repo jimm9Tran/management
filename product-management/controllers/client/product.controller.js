@@ -1,19 +1,53 @@
 const Product = require("../../models/product.model")
 
 // [GET] /products
+// [GET] /products
 module.exports.index = async (req, res) => {
-    const products = await Product.find({
-        status: "active",
-        deleted: false
-    }).sort({position: "desc"});
+    try {
+        const products = await Product.find({
+            status: "active",
+            deleted: false
+        }).sort({ position: "desc" });
 
-    const newProducts = products.map(item => {
-        item.priceNew = (item.price*100- item.price*item.discountPercentage);
-        return item;
-    })
+        // Correct discount calculation
+        const newProducts = products.map(item => {
+            const discountFactor = (100 - item.discountPercentage) / 100; // Calculating discounted price
+            item.priceNew = item.price * discountFactor;
+            return item;
+        });
 
-    res.render("client/pages/products/index", {
-        pageTitle: "Products",
-        products: newProducts
-    });
+        res.render("client/pages/products/index", {
+            pageTitle: "Danh sách sản phẩm",
+            products: newProducts
+        });
+    } catch (error) {
+        console.error("Error fetching products:", error);
+        res.status(500).send("Lỗi hệ thống! Không thể tải sản phẩm.");
+    }
+};
+
+
+// [GET] /products/:slug
+module.exports.detail = async (req, res) => {
+    try {
+        const find = {
+            deleted: false,
+            status: "active",
+            slug: req.params.slug
+        };
+
+        const product = await Product.findOne(find);
+
+        if (!product) {
+            return res.status(404).send("Sản phẩm không tồn tại.");
+        }
+
+        res.render("client/pages/products/detail", {
+            pageTitle: product.title,
+            product: product
+        });
+    } catch (error) {
+        console.error("Error fetching product detail:", error);
+        res.status(500).send("Lỗi hệ thống! Không thể tải chi tiết sản phẩm.");
+    }
 };
