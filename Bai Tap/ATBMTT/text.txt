@@ -1,7 +1,0 @@
-- Lựa chọn cách loại mã hóa
-- Nhập dữ liệu mã hóa từ file
-- Lưu lại file mã hóa
-    + Cho phép người dùng lựa chọn lưu file như thế nào?
-        + Chọn tên để lưu.
-        + Lưu ở đâu
-        + Có lựa chọn xóa bản gốc hay không.
