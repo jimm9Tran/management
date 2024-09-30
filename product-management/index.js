@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const flash = require('express-flash');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const path = require('path'); // Add this line
+
 require("dotenv").config();
 
 const db = require("./config/database");
@@ -17,6 +19,7 @@ const port = process.env.PORT;
   
 app.use(methodOverride("_method"));
 
+app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
 
 app.set("views", "./view");
 app.set("view engine", "pug");
