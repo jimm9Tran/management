@@ -1,14 +1,15 @@
-<button class="sider-toggle-btn">☰</button>
+body
+    button.sider-toggle-btn(onclick="toggleSidebar()") ☰
 
-
-.sider.collapsible
-    .inner-menu 
-        ul 
-            li 
-                a(href=`${prefixAdmin}/dashboard`)
-                   
-                    span Tổng quan 
-            li 
-                a(href=`${prefixAdmin}/products`)
-
-                    span Sản phẩm 
+    #sider.sider
+        .inner-menu
+            ul
+                li
+                    a(href=`${prefixAdmin}/dashboard`)
+                        span Tổng quan
+                li
+                    a(href=`${prefixAdmin}/product-category`)
+                        span Danh mục sản phẩm
+                li
+                    a(href=`${prefixAdmin}/products`)
+                        span Danh sách sản phẩm
