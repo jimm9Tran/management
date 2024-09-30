@@ -58,12 +58,21 @@ module.exports.index = async (req, res) => {
         req.query,
         countProducts
     )
-
-    
     // End Pagination
+    let sort = {};
 
+    if (req.query.sortKey && req.query.sortValue) {
+        sort[req.query.sortKey] = req.query.sortValue;
+    } else {
+        sort.position = "desc";
+    }
+
+
+    // Sort
+
+    // End Sort
     const products = await Products.find(find)
-        .sort({position: "desc"})
+        .sort(sort)
         .limit(objectPagination.limitItems)
         .skip((objectPagination.currentPage - 1) * objectPagination.limitItems);
 
