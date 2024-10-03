@@ -213,3 +213,10 @@ if (sort) {
     }
 }
 // End Sort
+
+
+/* JavaScript to add sticky effect */
+window.addEventListener('scroll', function() {
+    const header = document.querySelector('.header');
+    header.classList.toggle('sticky', window.scrollY > 50);
+}); 

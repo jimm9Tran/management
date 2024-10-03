@@ -153,48 +153,278 @@ body {
 }
 
 /* end product */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Container for products */
 .product-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px;
-    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between products */
+    padding: 20px;
 }
 
-.product {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 16px;
-    text-align: center;
-    background-color: #fff;
-    transition: transform 0.3s ease;
+/* Each product card */
+.product-card {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.product img {
-    width: 100%;
+.product-card:hover {
+    transform: translateY(-5px); /* Slight hover effect */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+}
+
+/* Product image */
+.product-image {
+    max-width: 100%;
     height: auto;
-    object-fit: cover;
+    object-fit: contain;
+    margin-bottom: 10px;
 }
 
-.product h3 {
-    margin-top: 10px;
-    font-size: 1rem;
+/* Product info (category, title, price) */
+.product-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Category text */
+.product-category {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+/* Product title */
+.product-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    height: 40px; /* Limit the height for long titles */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Product price */
+.product-price {
+    font-size: 16px;
+    color: #f44336;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Discounted price */
+.discount-price {
+    font-size: 14px;
+    color: #757575;
+    text-decoration: line-through;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .product-container {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
+.picture {
+    width: 100%; /* Makes sure it takes the full width of the parent */
+    max-width: 1700px; /* Set a reasonable maximum width for larger screens */
+    margin: 0 auto; /* Center the image container */
+    padding: 10px; /* Adds some padding around the image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+    border-radius: 10px; /* Rounds the edges */
+}
+
+.picture img {
+    width: 100%; /* Makes the image fully responsive */
+    height: auto; /* Maintains the aspect ratio */
+    display: block; /* Removes inline-block space below the image */
+    border-radius: 10px; /* Same radius as container for consistency */
 }
 
 @media (max-width: 768px) {
-    .product-container {
-        padding: 0 16px;
+    .picture {
+        max-width: 100%; /* Full width for smaller screens */
+        padding: 5px; /* Reduce padding on smaller screens */
     }
 }
 
 @media (max-width: 480px) {
-    .product h3 {
-        font-size: 0.9rem;
+    .picture {
+        padding: 0; /* No padding on very small screens */
     }
 }
+
+
+/* Adidas product */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin: 20px 0;
+  }
+  
+  p {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+  }
+  
+  /* Container for Adidas products */
+  .adidas-product {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .adidas-product a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .adidas-product img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+  }
+  
+  .adidas-product img:hover {
+    transform: scale(1.05);
+  }
+  
+  .adidas-details-line h3 {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 600;
+  }
+  
+  .adidas-details-line p {
+    font-size: 1rem;
+    text-align: center;
+    color: #333;
+  }
+  
+  .adidas-details-line {
+    text-align: center;
+  }
+  
+  .adidas-product .main-img {
+    grid-column: span 2;
+    width: 100%;
+    height: auto;
+  }
+  
+  .see-more {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .see-more a {
+    font-size: 1.2rem;
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .see-more a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 1.5rem;
+    }
+  
+    p {
+      font-size: 1rem;
+    }
+  
+    .adidas-product img {
+      border-radius: 5px;
+    }
+  
+    .adidas-product .main-img {
+      grid-column: span 1;
+    }
+  
+    .adidas-details-line h3 {
+      font-size: 1rem;
+    }
+  
+    .adidas-details-line p {
+      font-size: 0.9rem;
+    }
+  
+    .see-more a {
+      font-size: 1rem;
+    }
+  }
+  
+/* End Adidas product */
+
+
+.news {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+    gap: 20px;
+    padding: 20px;
+}
+
+.news a {
+    text-decoration: none;
+    color: black;
+    transition: transform 0.3s ease;
+}
+
+.news a:hover {
+    transform: translateY(-5px); /* Small animation on hover */
+}
+
+.news img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* Rounded corners for images */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: box-shadow 0.3s ease;
+}
+
+.news img:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+.news h3 {
+    font-size: 1.2rem;
+    margin: 10px 0 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .news h3 {
+        font-size: 1rem;
+    }
+}
+
+
