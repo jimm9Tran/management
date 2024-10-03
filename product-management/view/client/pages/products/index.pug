@@ -7,35 +7,43 @@ block main
             .col-12 
                 +box-head("Danh sách sản phẩm")
 
-        .row 
-            each item in products
-                .col-4.mb-3 
-                    .product-item 
-                        .inner-image
-                            img(src=item.thumbnail alt=item.title)
-                        .inner-content 
-                            h3.inner-title 
-                                a(href=`/products/${item.slug}`) #{item.title}
-                            .inner-price-new #{item.price}$
-                            .inner-discount -#{item.discountPercentage}%
+        //- .row 
+        //-     each item in products
+        //-         .col-4.mb-3 
+        //-             .product-item 
+        //-                 .inner-image
+        //-                     img(src=item.thumbnail alt=item.title)
+        //-                 .inner-content 
+        //-                     h3.inner-title 
+        //-                         a(href=`/products/${item.slug}`) #{item.title}
+        //-                     .inner-price-new #{item.price}$
+        //-                     .inner-discount -#{item.discountPercentage}%
 
-        .row
-            section.product-list
-                .line1
-                    each product in products
-                        article.product
-                            img(src=product.thumbnail alt="image")
-                            h3= product.title
-                            h3= product.price
-                .line2
-                    each product in products
-                        article.product
-                            img(src=product.thumbnail alt="image")
-                            h3= product.title
-                            h3= product.price
-                .line3
-                    each product in products
-                        article.product
-                            img(src=product.thumbnail alt="image")
-                            h3= product.title
-                            h3= product.price
+        
+        //- script.
+        //-     const images = [
+        //-         'https://cdn.authentic-shoes.com/wp-content/uploads/2024/01/BrandCampaign_LaunchBanners_Prim-1-2048x623.webp',
+        //-         'https://cdn.authentic-shoes.com/wp-content/uploads/2024/05/AJ4MilitaryBlue_Primary_Desktop-2048x623.webp',
+        //-         'https://bizweb.dktcdn.net/100/500/384/themes/928070/assets/collection_banner.jpg?1714744908576',
+        //-         'https://cdn.authentic-shoes.com/wp-content/uploads/2024/03/onitsukatiger_hp_mexico66_cud_ss.webp',
+        //-         'https://cdn.authentic-shoes.com/wp-content/uploads/2024/08/20240717083906-0.webp',
+        //-         'https://cdn.authentic-shoes.com/wp-content/uploads/2023/09/image-54-2048x711-2.webp',
+        //-         'https://cdn.authentic-shoes.com/wp-content/uploads/2024/01/AJ1_Yellow_Ochre_Release_DayPrim-2048x625.webp'
+        //-     ];
+
+
+        //- .carousel-container
+        //-     button.prev2(onclick="prevSlide()") <
+        //-     .carousel2
+        //-         each img, index in images
+        //-             .carousel-item2
+        //-                 img(src=img, alt=`Image ${index + 1}`)
+        //-     button.button2(onclick="nextSlide()") >
+
+        
+        .product-container
+            each item in products
+                article.product
+                    img(src=item.thumbnail alt="image")
+                    h3= item.title  
+                    h3= item.price
