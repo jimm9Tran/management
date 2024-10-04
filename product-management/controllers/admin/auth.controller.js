@@ -38,5 +38,14 @@ module.exports.loginPost = async (req, res) => {
         return;
     }
 
+    res.cookie("token", user.token);
+
     res.redirect(`${systemConfig.prefixAmin}/products`);
+};
+
+// [GET] /admin/auth/logout
+module.exports.logout = (req, res) => {
+    //xóa được token trong cookie
+    res.clearCookie("token");
+    res.redirect(`${systemConfig.prefixAmin}/auth/login`);
 };
