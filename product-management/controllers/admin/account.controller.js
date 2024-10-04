@@ -53,7 +53,7 @@ module.exports.createPost = async (req, res) => {
         const record = new Account(req.body);
         await record.save();
 
-        res.redirect(`${systemConfig.prefixAmin}/accounts`);
+        res.redirect(`${systemConfig.prefixAdmin}/accounts`);
     }
 };
 
@@ -74,7 +74,7 @@ module.exports.edit = async (req, res) => {
             roles: roles,
         });
     } catch (error) {
-        res.redirect(`${systemConfig.prefixAmin}/accounts`);
+        res.redirect(`${systemConfig.prefixAdmin}/accounts`);
     }
 };
 

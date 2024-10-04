@@ -17,8 +17,6 @@ module.exports.index = async (req, res) => {
 
 // [GET] /admin/roles/create
 module.exports.create = async (req, res) => {
-
-
     res.render("admin/pages/roles/create", {
         pageTitle: "Tạo Nhóm quyền",
     });
@@ -30,7 +28,8 @@ module.exports.createPost = async (req, res) => {
 
     await record.save();
 
-    res.redirect(`${systemConfig.prefixAmin}/roles`)
+    // Corrected typo
+    res.redirect(`${systemConfig.prefixAdmin}/roles`);
 };
 
 // [GET] /admin/roles/edit/:id
@@ -39,8 +38,8 @@ module.exports.edit = async (req, res) => {
         const id = req.params.id;
 
         let find = {
-            _id : id,
-            deleted : false
+            _id: id,
+            deleted: false
         };
 
         const data = await Role.findOne(find);
@@ -50,7 +49,8 @@ module.exports.edit = async (req, res) => {
             data: data
         });
     } catch (error) {
-        res.redirect(`${systemConfig.prefixAmin}/roles`)
+        // Corrected typo
+        res.redirect(`${systemConfig.prefixAdmin}/roles`);
     }
 };
 
@@ -60,23 +60,21 @@ module.exports.editPatch = async (req, res) => {
         const id = req.params.id;
 
         await Role.updateOne({
-            _id : id
-        },
-        req.body
-        );
+            _id: id
+        }, req.body);
 
         req.flash("success", "Cập nhật nhóm quyền thành công");
     } catch (error) {
         req.flash("error", "Cập nhật nhóm quyền thất bại");
     }
-    res.redirect("back")
+    res.redirect("back");
 };
 
 // [GET] /admin/roles/permission
 module.exports.permissions = async (req, res) => {
     const find = {
         deleted: false
-    }
+    };
 
     const records = await Role.find(find);
 
@@ -90,17 +88,17 @@ module.exports.permissions = async (req, res) => {
 module.exports.permissionsPatch = async (req, res) => {
     try {
         const permission = JSON.parse(req.body.permissions);
-    
+
         for (const item of permission) {
             await Role.updateOne(
-                { _id : item.id},
-                { permissions: item.permissions}
-            )
+                { _id: item.id },
+                { permissions: item.permissions }
+            );
         }
 
         req.flash("success", "Cập nhật phân quyền thành công");
     } catch (error) {
-        req.flash("error", "Cập nhật phân quyền thất bại")
+        req.flash("error", "Cập nhật phân quyền thất bại");
     }
     res.redirect("back");
 };

@@ -48,7 +48,7 @@ module.exports.createPost = async (req, res) => {
     const record = new ProductCategory(req.body);
     await record.save();
 
-    res.redirect(`${systemConfig.prefixAmin}/product-category`);
+    res.redirect(`${systemConfig.prefixAdmin}/product-category`);
 };
 
 // [GET] //admin/product-category/edit
@@ -73,7 +73,7 @@ module.exports.edit = async (req, res) => {
             records: newRecords
         });
     } catch (error) {
-        res.redirect(`${systemConfig.prefixAmin}/product-category`)
+        res.redirect(`${systemConfig.prefixAdmin}/product-category`)
     }
 };
 

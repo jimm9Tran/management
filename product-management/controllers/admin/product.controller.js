@@ -191,7 +191,7 @@ module.exports.createPost = async (req, res) => {
     const product = new Products(req.body);
     await product.save();
 
-    res.redirect(`${systemConfig.prefixAmin}/products`);
+    res.redirect(`${systemConfig.prefixAdmin}/products`);
 };
 
 
@@ -218,7 +218,7 @@ module.exports.edit = async (req, res) => {
             category: newCategory
         })
     } catch (error) {
-        res.redirect(`${systemConfig.prefixAmin}/products`);
+        res.redirect(`${systemConfig.prefixAdmin}/products`);
     }
     
 };
@@ -264,7 +264,7 @@ module.exports.detail = async (req, res) => {
         // If product is not found, handle it
         if (!product) {
             req.flash('error', 'Sản phẩm không tồn tại.');
-            return res.redirect(`${systemConfig.prefixAmin}/products`);
+            return res.redirect(`${systemConfig.prefixAdmin}/products`);
         }
 
         // Render product details
@@ -276,6 +276,6 @@ module.exports.detail = async (req, res) => {
     } catch (error) {
         console.error("Error fetching product details:", error);
         req.flash('error', 'Đã xảy ra lỗi khi lấy thông tin sản phẩm.');
-        return res.redirect(`${systemConfig.prefixAmin}/products`);
+        return res.redirect(`${systemConfig.prefixAdmin}/products`);
     }
 };
