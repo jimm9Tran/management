@@ -27,7 +27,7 @@ app.set("view engine", "pug");
 
 // App Locals Variables
 const systemConfig = require("./config/system")
-app.locals.prefixAdmin = systemConfig.prefixAmin;
+app.locals.prefixAdmin = systemConfig.prefixAdmin;
 
 // parser application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))

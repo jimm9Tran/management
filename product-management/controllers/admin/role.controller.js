@@ -28,7 +28,6 @@ module.exports.createPost = async (req, res) => {
 
     await record.save();
 
-    // Corrected typo
     res.redirect(`${systemConfig.prefixAdmin}/roles`);
 };
 
@@ -49,7 +48,6 @@ module.exports.edit = async (req, res) => {
             data: data
         });
     } catch (error) {
-        // Corrected typo
         res.redirect(`${systemConfig.prefixAdmin}/roles`);
     }
 };
