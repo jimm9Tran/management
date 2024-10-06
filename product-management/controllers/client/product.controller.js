@@ -1,6 +1,7 @@
 const Product = require("../../models/product.model")
 const ProductCategory = require("../../models/product-category.model");
 const createTreeHelper = require("../../helpers/createTree");
+const productCategoryHelper = require("../../helpers/product-category");
 
 // [GET] /products
 module.exports.index = async (req, res) => {
@@ -57,4 +58,26 @@ module.exports.detail = async (req, res) => {
         console.error("Error fetching product detail:", error);
         res.status(500).send("Lỗi hệ thống! Không thể tải chi tiết sản phẩm.");
     }
+};
+
+// [GET] /products/:slugCategory
+module.exports.category = async (req, res) => {
+    const category = await ProductCategory.findOne({
+        slug: req.params.slugCategory,
+        status: "active",
+        deleted: false
+    });
+
+    const listSubCategory = await productCategoryHelper.getSubCategory(category.id);
+    const listSubCategoryId = listSubCategory.map(item => item.id);
+
+    const products = await Product.find({
+        product_category_id: { $in: [category.id, ...listSubCategoryId] },
+        deleted: false
+    }).sort({position: "desc"});
+    
+    res.render("client/pages/products/index", {
+        pageTitle: category.title,
+        products: products,
+    });
 };
