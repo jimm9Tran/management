@@ -213,3 +213,140 @@
 }
 
 /* end nổi bật */
+
+
+/* Trang detail */
+
+/* Global Styles */
+
+/* Product Detail */
+/* .product-detail {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 30px;
+}
+
+.inner-thumb img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+}
+
+h1.inner-title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.inner-category {
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.inner-category a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.inner-category a:hover {
+    text-decoration: underline;
+}
+
+/* Price Section */
+.inner-price-new {
+    font-size: 1.5rem;
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.inner-price-old {
+    font-size: 1.2rem;
+    color: #999;
+    text-decoration: line-through;
+    margin-bottom: 10px;
+}
+
+.inner-percent {
+    font-size: 1rem;
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.inner-stock {
+    font-size: 1rem;
+    color: #3498db;
+    margin-bottom: 20px;
+}
+
+/* Form Styles */
+form {
+    margin-top: 20px;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Product Description */
+.inner-desc {
+    padding: 20px;
+    background-color: #fafafa;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .col-6, .col-12 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    h1.inner-title {
+        font-size: 1.8rem;
+    }
+
+    .inner-price-new, .inner-price-old {
+        font-size: 1.2rem;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+} */
+
+
+/* End Trang detail */
