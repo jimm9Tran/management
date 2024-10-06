@@ -12,6 +12,8 @@ const productSchema = new mongoose.Schema({
     description: String,
     category: String,
     price: Number,
+    status: String,
+    featured: String,
     discountPercentage: Number,
     rating: Number,
     stock: Number,
@@ -33,7 +35,6 @@ const productSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    status: String,
     // deleteAt: Date,
     position: Number,
     createdBy: {
