@@ -106,6 +106,5 @@ module.exports.editPatch = async (req, res) => {
         req.flash("success", "Cập nhật thành công!");
     }
 
-    
     res.redirect("back");
 }

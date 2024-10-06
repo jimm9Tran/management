@@ -1,3 +1,5 @@
+include ../mixins/sub-menu.pug
+
 header.logo
     a(href="Home.html")
         img(src="./images/Ảnh chụp màn hình 2024-07-30 103502.png", alt="image")  
@@ -18,15 +20,12 @@ header.logo
                             a(href="#") Hướng dẫn mua hàng
             li
                 a(href="#") Helps
-            li
-                a(href="#") Mua bán, trao đổi
-                    ul.dropdown
-                        li
-                            a(href="#") Giày bóng rổ 2hand
-                        li
-                            a(href="#") Giày casual 2hand
-                        li
-                            a(href="#") Thu giày new, 2hand
+            li(class="sub-menu")
+                -const pathProduct = "/products";
+                a(href=pathProduct) Giày
+                    +sub-menu(layoutProductsCategory, pathProduct)
+
+
     img(src="https://www.freeiconspng.com/uploads/search-icon-png-21.png", alt="Tìm kiếm", id="openModal", style="cursor: pointer; width: 35px; height: 35px; margin-left: 10px;")
 
     #searchModal.modal
@@ -66,119 +65,7 @@ header.logo
             }
         }
 
-    .log-in
-        a(href="Login.html") Đăng nhập
-    .sign-up
-        a(href="Signup.html") Đăng ký
     .cart
         a(href="#")
             img(src="./images/Ảnh chụp màn hình 2024-09-10 162015.png", alt="image")
 
-nav.dropdown-menu
-    ul.menu2
-        li
-            a(href="") Thương hiệu
-            ul.brand1
-                li
-                    a(href="#") Nike
-                li
-                    a(href="#") Adidas
-                li
-                    a(href="#") Jordan
-                li
-                    a(href="#") Puma
-                li
-                    a(href="#") MLB
-                li
-                    a(href="#") Asics
-            ul.brand1
-                li
-                    a(href="#") Nike
-                li
-                    a(href="Adidas-product.html") Adidas
-                li
-                    a(href="#") Jordan
-                li
-                    a(href="#") Puma
-                li
-                    a(href="#") Fear of God
-                li
-                    a(href="#") MLB
-                li
-                    a(href="#") Asics
-                li
-                    a(href="#") Converse
-                li
-                    a(href="#") Lining
-        li
-            a(href="#") Hàng mới
-        li
-            a(href="#") Giày Sneakers casual
-            ul.brand1
-                h3 Top models
-                li
-                    a(href="#") Air Jordan
-                li
-                    a(href="#") Converse 1970s
-                li
-                    a(href="#") Nike Air Force 1
-                li
-                    a(href="#") New Balance 9060
-                li
-                    a(href="#") Nike Air Max
-                li
-                    a(href="#") Nike Cotez
-                li
-                    a(href="#") Adidas Ultraboost
-                li
-                    a(href="#") Adidas Yeezy
-        li
-            a(href="#") Giày Sneakers bóng rổ
-            ul.brand1
-                li
-                    a(href="#") Giày New
-                li
-                    a(href="#") Chuyên outdoor
-                li
-                    a(href="#") Chuyên indoor
-                li
-                    a(href="#") Hiệu năng cao
-                li
-                    a(href="#") Giá rẻ
-                    ul.brand2
-                        li
-                            a(href="#") Dưới 500k
-                        li
-                            a(href="#") Từ 500k đến dưới 800k
-                        li
-                            a(href="#") Từ 800k đến dưới 1 triệu
-                        li
-                            a(href="#") Trên 1 triệu
-        li
-            a(href="#") Phụ kiện
-            ul.brand1
-                li
-                    a(href="") Quần áo bóng rổ
-                li
-                    a(href="#") Balo
-                li
-                    a(href="#") Tất
-                li
-                    a(href="#") Băng đô, áo combat
-                li
-                    a(href="#") Bó gối
-                li
-                    a(href="#") Dây giày thay thế
-        li
-            a(href="#") Khác
-            ul.brand1
-                li
-                    a(href="#") Vòng tay silicon
-                li
-                    a(href="#") Mũ NBA
-                li
-                    a(href="#") Móc khóa bóng rổ
-                li
-                    a(href="#") Mô hình cầu thủ
-                li
-                    a(href="#") Khăn, bình nước Gatorade
