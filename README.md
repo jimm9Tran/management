@@ -1,4 +1,5 @@
 Shoe Store Website
+----------------------------------
 A Shoe Store Platform with Admin Management Built with Node.js, Express.js, Mongoose, and Pug
 Overview
 This project is a comprehensive e-commerce website for a shoe store, complete with an admin panel for managing products, categories, and user permissions. Built using Node.js, Express.js, MongoDB (via Mongoose), and Pug templates, this project is designed for performance, flexibility, and scalability. It features a powerful admin dashboard for product management, category organization, and user role assignments, all while providing a seamless shopping experience for customers.
