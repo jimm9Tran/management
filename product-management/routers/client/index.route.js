@@ -6,6 +6,4 @@ module.exports = (app) => {
     app.use(categoryMiddleware.category);
     app.use("/", homeRoutes );
     app.use("/products", productRoutes);
-    
-
 };

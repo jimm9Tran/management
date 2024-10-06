@@ -7,47 +7,6 @@ block main
             .col-12 
                 +box-head(pageTitle)
 
-        //- .row 
-        //-     each item in products
-        //-         .col-4.mb-3 
-        //-             .product-item 
-        //-                 .inner-image
-        //-                     img(src=item.thumbnail alt=item.title)
-        //-                 .inner-content 
-        //-                     h3.inner-title 
-        //-                         a(href=`/products/${item.slug}`) #{item.title}
-        //-                     .inner-price-new #{item.price}$
-        //-                     .inner-discount -#{item.discountPercentage}%
-
-        
-        //- script.
-        //-     const images = [
-        //-         'https://cdn.authentic-shoes.com/wp-content/uploads/2024/01/BrandCampaign_LaunchBanners_Prim-1-2048x623.webp',
-        //-         'https://cdn.authentic-shoes.com/wp-content/uploads/2024/05/AJ4MilitaryBlue_Primary_Desktop-2048x623.webp',
-        //-         'https://bizweb.dktcdn.net/100/500/384/themes/928070/assets/collection_banner.jpg?1714744908576',
-        //-         'https://cdn.authentic-shoes.com/wp-content/uploads/2024/03/onitsukatiger_hp_mexico66_cud_ss.webp',
-        //-         'https://cdn.authentic-shoes.com/wp-content/uploads/2024/08/20240717083906-0.webp',
-        //-         'https://cdn.authentic-shoes.com/wp-content/uploads/2023/09/image-54-2048x711-2.webp',
-        //-         'https://cdn.authentic-shoes.com/wp-content/uploads/2024/01/AJ1_Yellow_Ochre_Release_DayPrim-2048x625.webp'
-        //-     ];
-
-
-        //- .carousel-container
-        //-     button.prev2(onclick="prevSlide()") <
-        //-     .carousel2
-        //-         each img, index in images
-        //-             .carousel-item2
-        //-                 img(src=img, alt=`Image ${index + 1}`)
-        //-     button.button2(onclick="nextSlide()") >
-
-        
-        //- .product-container
-        //-     each item in products
-        //-         article.product
-        //-             img(src=item.thumbnail alt="image")
-        //-             h3= item.title  
-        //-             h3= item.price
-
         .product-container
             - let count = 0
             each item in products
@@ -65,27 +24,6 @@ block main
         .picture
             img(src="https://cdn.authentic-shoes.com/wp-content/uploads/2024/07/663742.webp" alt="image")
 
-
-        //- h2 Các sản phẩm đến từ thương hiệu Adidas
-        //- p Mua sắm ngay giày Yeezy, samba, giày chạy Adidas cho mùa hè 2024!!!
-
-        //- section.adidas-product
-        //-     // Main featured image (you can dynamically pass this too if needed)
-        //-     a(href="#")
-        //-         img(src="https://brand.assets.adidas.com/image/upload/running_2024_tier1_sponsored_boston_marathon_reactive_marathon_winner_launch_plp_image_collection_1_d_d4c72a4410.jpg" alt="Adidas Product Image")
-
-        //-     // Loop through products and render each
-        //-     //- Loop through products and render each (limited to 6 products)
-        //-     each product, index in products
-        //-         if index < 6
-        //-             article.adidas-details-line
-        //-                 a(href=`/product/${product.slug}`)
-        //-                     img(src=product.thumbnail alt=product.title)
-
-
-        //- // Link to more products
-        //- h3.see-more
-        //-     a(href="Adidas-product.html") Xem thêm
 
         section.news
             a(href="C:\\Users\\PC\\Documents\\Sneakeraddictor\\SneakerNews\\News1.html")
