@@ -54,7 +54,6 @@ module.exports.detail = async (req, res) => {
             });
 
             product.category = category;
-
         }
 
         if (!product) {
