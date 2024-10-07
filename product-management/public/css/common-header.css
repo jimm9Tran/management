@@ -1,77 +1,162 @@
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-body {
-    font-family: Arial, sans-serif;
-    font-size: 16px; /* Increased base font size for better readability */
-    padding-top: 80px; /* Ensures content is not hidden under the header */
-}
-
-/* Header */
-header {
+/* ====================== Logo ===================== */
+.logo {
+    z-index: 1000;
+    top: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
-    position: relative; /* Header is not fixed initially */
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 15px 30px; /* Padding for larger header */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.3s ease;
-    z-index: 999;
+    position: sticky;
 }
 
-/* Scrolled Header (fixed on scroll) */
-.scrolled-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(255, 255, 255, 0.8);
+.logo > .fixed {
+    display: flex;
+    padding: 10px 20px;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    height: 100px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Header container */
-.header-container {
-    width: 100%;
+.logo > .fixed > a > img {
+    width: 150px;
+    height: 100px;
+}
+
+/* ====================== Modal ===================== */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 400px;
+    text-align: center;
+    border-radius: 10px;
+    background: url("/images/cart.png") no-repeat center center / cover;
+}
+
+.modal-content > input {
+    width: 200px;
+    height: 50px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    cursor: pointer;
+}
+
+/* ====================== Cart ===================== */
+.logo > .cart {
+    margin-left: 20px;
+}
+
+.logo > .cart > img {
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* ====================== Navigation ===================== */
+nav > .menu {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* Logo */
-.logo img {
-    max-height: 80px;
-}
-
-/* Navigation */
-nav ul.menu {
+    justify-content: center;
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
     list-style: none;
-    display: flex;
-    align-items: center;
-    margin-left: 30px;
 }
 
-ul.menu li {
+nav > .menu > li {
     position: relative;
-    margin: 0 15px; /* Increased margin for better spacing */
+    margin: 0 20px;
+    cursor: pointer;
 }
 
-ul.menu li a {
+nav > .menu > li a {
     text-decoration: none;
-    color: #333;
-    font-weight: 600;
-    font-size: 18px; /* Increased font size */
-    padding: 10px 15px;
+    color: #000;
+    padding: 10px 20px;
+    display: block;
+    transition: background-color 0.3s ease;
 }
 
-/* Right Section (Search + Cart) */
+nav > .menu > li a:hover {
+    background-color: #f5f5f5;
+}
+
+/* ====================== Sub-menu ===================== */
+/* ====================== Sub-menu ===================== */
+nav > .menu > li.sub-menu {
+    position: relative;
+}
+
+nav > .menu > li.sub-menu > ul {
+    display: none; /* Initially hidden */
+    position: absolute; /* Positioning below the parent item */
+    top: 100%; /* Align with the bottom of the parent */
+    left: 0; /* Align to the left of the parent */
+    background-color: #fff; /* Background color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    padding: 10px 0; /* Padding */
+    list-style: none; /* Remove bullets */
+    z-index: 1000; /* Keep it above other elements */
+    min-width: 200px; /* Minimum width for dropdown */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition for visibility */
+    opacity: 0; /* Start hidden */
+    visibility: hidden; /* Start hidden */
+}
+
+nav > .menu > li.sub-menu:hover > ul {
+    display: block; /* Show on hover */
+    opacity: 1; /* Fade in */
+    visibility: visible; /* Make visible */
+}
+
+nav > .menu > li.sub-menu > ul > li {
+    padding: 10px 20px; /* Padding for sub-menu items */
+    white-space: nowrap; /* Prevent line breaks */
+    transition: background-color 0.3s ease, padding 0.3s ease; /* Smooth transitions */
+    font-size: 14px;
+}
+
+nav > .menu > li.sub-menu > ul > li:hover {
+    background-color: #f0f0f0; /* Hover effect for sub-menu items */
+    padding-left: 30px; /* Indent on hover for emphasis */
+}
+
+/* Optional: Add a small arrow for better UX */
+nav > .menu > li.sub-menu::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -10px; /* Position arrow outside the parent */
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #333; /* Arrow color */
+    transform: translateY(-50%);
+}
+/* ====================== Right Section ===================== */
 .right-section {
     display: flex;
     align-items: center;
@@ -84,7 +169,7 @@ ul.menu li a {
 }
 
 .search-container input[type="text"] {
-    padding: 8px 12px; /* Larger padding for better interaction */
+    padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-right: 5px;
@@ -98,7 +183,7 @@ ul.menu li a {
     cursor: pointer;
 }
 
-/* Cart Section */
+/* ====================== Cart Count ===================== */
 .cart {
     display: flex;
     align-items: center;
@@ -117,119 +202,21 @@ ul.menu li a {
     font-size: 14px;
 }
 
-/* Submenu Styling */
-ul.menu {
-    list-style: none;
-    display: flex;
-    align-items: center;
-}
-
-ul.menu li {
-    position: relative;
-    margin: 0 20px;
-}
-
-ul.menu li a {
-    text-decoration: none;
-    color: #333;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 10px;
-}
-
-/* Submenu Design */
-.sub-menu ul {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: white;
-    padding: 10px 0;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    min-width: 200px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-/* Show Submenu on Hover */
-.sub-menu:hover ul {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Nested Submenu */
-.nested-sub-menu {
-    position: absolute;
-    top: 0;
-    left: 100%;
-    background-color: white;
-    padding: 10px 0;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    min-width: 180px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-/* Show Nested Submenu on Hover */
-.sub-menu ul li:hover .nested-sub-menu {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.nested-sub-menu li {
-    padding: 5px 10px;
-}
-
-.nested-sub-menu li a {
-    font-size: 16px;
-    padding: 8px 10px;
-}
-
-/* Ensure proper alignment */
-.sub-menu ul li {
-    padding: 5px 15px;
-}
-
-/* Responsive Design */
+/* ====================== Responsive Design ===================== */
 @media (max-width: 768px) {
-    ul.menu {
+    nav > .menu {
         flex-direction: column;
     }
 
-    ul.menu li {
+    nav > .menu > li {
         margin: 10px 0;
     }
 
-    .sub-menu ul,
-    .nested-sub-menu {
-        position: static;
-        box-shadow: none;
-        transform: none;
-        opacity: 1;
-    }
-
-    .nested-sub-menu {
-        left: 0;
-        top: auto;
-        padding: 10px 0;
-    }
-}
-
-/* Responsive Header */
-@media (max-width: 768px) {
-    nav ul.menu {
+    .logo > .fixed {
         flex-direction: column;
     }
 
-    nav ul.menu li {
-        margin-bottom: 10px;
-    }
-
-    .header-container {
-        flex-direction: column;
+    .right-section {
+        margin-top: 10px; /* Space for better layout in mobile view */
     }
 }

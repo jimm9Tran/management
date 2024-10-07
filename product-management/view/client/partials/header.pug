@@ -1,27 +1,25 @@
 include ../mixins/sub-menu.pug
 
-header.fixed-header
-    .header-container
-        a.logo(href="/")
+header.logo
+    .fixed
+        a(href="/")
             img(src="/images/logo.png", alt="image")
-        
+
         nav
             ul.menu
-                li
-                    a(href="/") Trang Chủ
                 li.sub-menu
                     - const pathProduct = "/products";
                     a(href=pathProduct) Giày
                         +sub-menu(layoutProductsCategory, pathProduct)
                 li
-                    a(href="#") Phụ Kiện
+                    a(href="#") Tin Tức
                 li
-                    a(href="#") Tin Tức – Sự Kiện
+                    a(href="#") Về chúng tôi
                 li
-                    a(href="#") Liên Hệ
-                li
-                    a(href="#") Sale
+                    a(href="#") Helps
+
         
+
         .right-section
             .search-container
                 form(action="/search", method="GET")
@@ -32,3 +30,4 @@ header.fixed-header
                 a(href="/cart")
                     img(src="/images/cart.png", alt="Giỏ hàng")
                     span.cart-count #{miniCart ? miniCart.totalQuantity : 0}
+
