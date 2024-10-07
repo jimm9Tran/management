@@ -1,52 +1,34 @@
 include ../mixins/sub-menu.pug
 
-header.logo
-    a(href=`/`)
-        img(src="/images/logo.png", alt="image")  
-    nav
-        ul.menu
-            li
-                a(href="#") Tin Tức
-            li
-                a(href="#") Về chúng tôi
-                    ul.dropdown
-                        li
-                            a(href="#") Lịch sử ra đời
-                        li
-                            a(href="#") Độ uy tín
-                        li
-                            a(href="#") Chính sách bảo hành
-                        li
-                            a(href="#") Hướng dẫn mua hàng
-            li
-                a(href="#") Helps
-            li(class="sub-menu")
-                -const pathProduct = "/products";
-                a(href=pathProduct) Giày
-                    +sub-menu(layoutProductsCategory, pathProduct)
-
-
-    //- img(src="https://www.freeiconspng.com/uploads/search-icon-png-21.png", alt="Tìm kiếm", id="openModal", style="cursor: pointer; width: 35px; height: 35px; margin-left: 10px;")
-
-    .col-5 
-        form(
-            action="/search"
-            method="GET"
-        )
-            div(class="form-group d-flex mb-0")
-                input(
-                    text="text"
-                    placeholder="Nhập từ khóa..."
-                    class="form-control"
-                    name="keyword"
-                    value=keyword
-                )
-                button(
-                    type="submit"
-                    class="btn btn-primary"
-                ) Tìm
-
-    .cart
-        a(href="/cart") Giỏ hàng (#{miniCart ? miniCart.totalQuantity : 0})
-            img(src="/images/cart.png", alt="image")
-
+header.fixed-header
+    .header-container
+        a.logo(href="/")
+            img(src="/images/logo.png", alt="image")
+        
+        nav
+            ul.menu
+                li
+                    a(href="/") Trang Chủ
+                li.sub-menu
+                    - const pathProduct = "/products";
+                    a(href=pathProduct) Giày
+                        +sub-menu(layoutProductsCategory, pathProduct)
+                li
+                    a(href="#") Phụ Kiện
+                li
+                    a(href="#") Tin Tức – Sự Kiện
+                li
+                    a(href="#") Liên Hệ
+                li
+                    a(href="#") Sale
+        
+        .right-section
+            .search-container
+                form(action="/search", method="GET")
+                    input(type="text", placeholder="Tìm kiếm", name="keyword")
+                    button(type="submit")
+                        i.icon-search
+            .cart
+                a(href="/cart")
+                    img(src="/images/cart.png", alt="Giỏ hàng")
+                    span.cart-count #{miniCart ? miniCart.totalQuantity : 0}
