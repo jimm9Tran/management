@@ -2,6 +2,10 @@
 
 This is a Shoe Store Management System built with Node.js, Express.js, MongoDB, and Pug as the template engine. The project provides a complete solution for managing an online shoe store, including an Admin Panel for product management, user roles, and an intuitive frontend for users.
 
+
+---
+                                                -- Minh Hien --
+---
 ## Features
 ### Client Side
 - Product Listing: View all available shoes, sorted by categories and discounts.
