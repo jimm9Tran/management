@@ -21,18 +21,13 @@ module.exports.index = async (req, res) => {
 
     // Hiển thị sản phẩm Adidas
     const adidasCategory = "670255c9993b091bc9f23192";
-
-
-    const listSubCategory = await productCategoryHelper.getSubCategory("670255c9993b091bc9f23192");
-    const listSubCategoryId = listSubCategory.map(item => item.id);
-
-
+    
     const products = await Product.find({
-        product_category_id: { $in: listSubCategoryId },
+        product_category_id: adidasCategory,
         deleted: false,
-        status: "active",   
-    }).sort({position: "desc"}).limit(9);
-
+        status: "active"
+    }).sort({ position: "desc" }).limit(12); 
+    
     res.render("client/pages/home/index", {
         pageTitle: "Trang chủ",
         productsFeatured: productsFeatured,

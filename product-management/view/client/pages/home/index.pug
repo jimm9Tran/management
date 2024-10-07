@@ -98,25 +98,25 @@ block main
     h2 Các sản phẩm đến từ thương hiệu Adidas
     p Mua sắm ngay giày Yeezy, samba, giày chạy Adidas cho mùa hè 2024!!!
     section.adidas-product
-    a(href="/")
-        img(src="https://brand.assets.adidas.com/image/upload/running_2024_tier1_sponsored_boston_marathon_reactive_marathon_winner_launch_plp_image_collection_1_d_d4c72a4410.jpg" alt="image")
-    
-    .product-container
-        .line
-        each product in products.slice(0, 3)
-            article.product
-            a(href=`/product/${product.id}`)
-                img(src=product.thumbnail alt=product.title)
-                h3= product.title
-                h3= product.price
-        .line
-        each product in products.slice(3, 6)
-            article.product
-            a(href=`/product/${product.id}`)
-                img(src=product.image alt="image")
-                h3= product.name
-                h3= product.price
+        a(href="/")
+            img(src="https://brand.assets.adidas.com/image/upload/running_2024_tier1_sponsored_boston_marathon_reactive_marathon_winner_launch_plp_image_collection_1_d_d4c72a4410.jpg" alt="image")
+        
+        .product-container
+            .line
+                each product in products.slice(0, 6)
+                    article.product
+                        a(href=`/products/detail/${product.slug}`)
+                            img(src=product.thumbnail alt=product.title)
+                            h3= product.title
+                            h3= product.price
 
+            .line
+                each product in products.slice(6, 12)
+                    article.product
+                        a(href=`/products/detail/${product.slug}`)
+                            img(src=product.thumbnail alt=product.title)
+                            h3= product.title
+                            h3= product.price 
 
     section.news
         button.arrow.left-arrow(onclick="scrollCarousel(-1)") &#8249;

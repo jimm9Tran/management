@@ -385,3 +385,108 @@ img {
 .product-card.discounted .product-price span.discount {
     display: inline-block;
 }
+
+.adidas-product {
+    margin-top: 20px;
+    display: flex;
+    height: auto; /* Thay đổi chiều cao thành auto để tự động điều chỉnh */
+    margin-bottom: 15px;
+    color: #111111;
+}
+
+.adidas-product > a {
+    margin: 10px 20px;
+}
+
+.adidas-product > a > img {
+    height: 570px; /* Có thể điều chỉnh tùy theo nhu cầu */
+    width: 350px; /* Có thể điều chỉnh tùy theo nhu cầu */
+    transition: filter 0.5s ease;
+    border-radius: 5px;
+}
+
+.adidas-product > a > img:hover {
+    filter: grayscale(100%);
+}
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; /* Khoảng cách giữa các sản phẩm */
+    justify-content: center;
+    margin-left: 50px;
+    margin-bottom: 20px;
+    padding: 10px 5px;
+}
+
+.line {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* This adapts to the number of products */
+    gap: 16px;
+    width: 100%;
+    align-content: center;
+}
+
+.product {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+}
+
+
+.product h3 {
+    margin: 10px 0;
+    font-size: 1rem;
+    height: 40px; /* Set a fixed height for titles */
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1b1717; /* Slightly darken the price for visibility */
+}
+
+a {
+    text-decoration: none;
+}
+
+.product img {
+    width: 100%;
+    height: auto; /* Để hình ảnh tự động điều chỉnh theo chiều rộng */
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product img:hover {
+    transform: scale(1.1);
+}
+
+.product h3 {
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.product h4 {
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .product-container {
+        padding: 0 16px;
+    }
+    .line {
+        grid-template-columns: repeat(3, 1fr); /* Hiển thị 3 sản phẩm mỗi hàng trên màn hình nhỏ hơn */
+    }
+}
+
+@media (max-width: 480px) {
+    .product h3 {
+        font-size: 0.9rem;
+    }
+    .line {
+        grid-template-columns: repeat(2, 1fr); /* Hiển thị 2 sản phẩm mỗi hàng trên màn hình rất nhỏ */
+    }
+}
