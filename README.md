@@ -4,8 +4,6 @@ This is a Shoe Store Management System built with Node.js, Express.js, MongoDB, 
 
 
 ---
-                                                -- Minh Hien --
----
 ## Features
 ### Client Side
 - Product Listing: View all available shoes, sorted by categories and discounts.
@@ -32,3 +30,6 @@ This is a Shoe Store Management System built with Node.js, Express.js, MongoDB, 
 
 ---
 ## Enjoy using the Shoe Store Website! 🎉👟
+
+---
+                                                -- Minh Hien --
