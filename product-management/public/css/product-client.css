@@ -212,6 +212,8 @@ body {
     text-overflow: ellipsis;
 }
 
+a{text-decoration: none;}
+
 /* Product price */
 .product-price {
     font-size: 16px;
@@ -263,93 +265,6 @@ body {
 }
 
 
-/* Adidas product */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-  }
-  
-  h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin: 20px 0;
-  }
-  
-  p {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.2rem;
-  }
-  
-  /* Container for Adidas products */
-  .adidas-product {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .adidas-product a {
-    text-decoration: none;
-    color: black;
-  }
-  
-  .adidas-product img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-  }
-  
-  .adidas-product img:hover {
-    transform: scale(1.05);
-  }
-  
-  .adidas-details-line h3 {
-    font-size: 1.1rem;
-    margin-top: 10px;
-    text-align: center;
-    font-weight: 600;
-  }
-  
-  .adidas-details-line p {
-    font-size: 1rem;
-    text-align: center;
-    color: #333;
-  }
-  
-  .adidas-details-line {
-    text-align: center;
-  }
-  
-  .adidas-product .main-img {
-    grid-column: span 2;
-    width: 100%;
-    height: auto;
-  }
-  
-  .see-more {
-    text-align: center;
-    margin: 20px 0;
-  }
-  
-  .see-more a {
-    font-size: 1.2rem;
-    color: #007BFF;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .see-more a:hover {
-    text-decoration: underline;
-  }
   
   /* Media queries for responsiveness */
   @media (max-width: 768px) {

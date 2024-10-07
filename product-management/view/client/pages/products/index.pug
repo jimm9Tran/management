@@ -3,36 +3,24 @@ include ../../mixins/box-head.pug
 
 block main 
     .container.my-3 
+        .picture
+            img(src="https://cdn.authentic-shoes.com/wp-content/uploads/2024/07/663742.webp" alt="image")
         .row
             .col-12 
                 +box-head(pageTitle)
 
         .product-container
-            - let count = 0
             each item in products
-                if count < 8
                     .product-card
+                        a(href=`products/detail/${item.slug}`)
                         img.product-image(src=item.thumbnail alt="image")
                         .product-info
                             h4.product-category Giày Sneaker
-                            h3.product-title= item.title
+                            a(href=`products/detail/${item.slug}`)
+                                h3.product-title= item.title
                             p.product-price #{item.price.toLocaleString()} ₫
                             if item.discountPrice
                                 p.discount-price #{item.discountPrice.toLocaleString()} ₫
-                    - count++
 
-        .picture
-            img(src="https://cdn.authentic-shoes.com/wp-content/uploads/2024/07/663742.webp" alt="image")
-
-
-        section.news
-            a(href="C:\\Users\\PC\\Documents\\Sneakeraddictor\\SneakerNews\\News1.html")
-                img(src="https://sneakernews.com/wp-content/uploads/2023/03/air-jordan-4-bred-reimagined-2024-info.jpg" alt="Jordan 4 2024")
-                h3 Những phiên bản Jordan 4 cập bến năm 2024
-            a(href="#")
-                img(src="https://cdn.authentic-shoes.com/wp-content/uploads/2023/05/nike-offwhite-the-ten_5d63d4a3609d41cf83583704e90914a3_2048x2048.jpeg" alt="Nike Off-White Auction")
-                h3 Bộ sưu tập Off-White™ x Nike “The Ten” sẽ được đem ra bán đấu giá
-            a(href="#")
-                img(src="https://cdn.authentic-shoes.com/wp-content/uploads/2023/05/c6_a1ng-hi_e1_bb_87u-th_e1_bb_9di-trang-_c4_91_e1_bb_8bch-th_e1_bb_a7_832caeebf19d4000bb82682de0c62905_2048x2048.png" alt="Adidas and Puma Feud")
-                h3 Liệu 2 anh em nhà Adidas và Puma có đường ai nấy đi sau những biến động?
+        
             

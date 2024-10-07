@@ -1,4 +1,6 @@
 const Product = require("../../models/product.model");
+const ProductCategory = require("../../models/product-category.model");
+const productCategoryHelper = require("../../helpers/product-category");
 
 // [GET] /
 module.exports.index = async (req, res) => {
@@ -17,9 +19,24 @@ module.exports.index = async (req, res) => {
     }).sort({position: "desc"}).limit(8);
     // End Hiển thị danh sách sản phẩm mới nhất
 
+    // Hiển thị sản phẩm Adidas
+    const adidasCategory = "670255c9993b091bc9f23192";
+
+
+    const listSubCategory = await productCategoryHelper.getSubCategory("670255c9993b091bc9f23192");
+    const listSubCategoryId = listSubCategory.map(item => item.id);
+
+
+    const products = await Product.find({
+        product_category_id: { $in: listSubCategoryId },
+        deleted: false,
+        status: "active",   
+    }).sort({position: "desc"}).limit(9);
+
     res.render("client/pages/home/index", {
         pageTitle: "Trang chủ",
         productsFeatured: productsFeatured,
-        productsNew: productsNew
+        productsNew: productsNew,
+        products: products
     });
 };

@@ -28,3 +28,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
+function scrollCarousel(direction) {
+    const carousel = document.getElementById('carousel');
+    const scrollAmount = 400; // Adjust the scroll amount as needed
+    carousel.scrollBy({
+        left: direction * scrollAmount, // Scroll left or right based on direction
+        behavior: 'smooth' // Smooth scrolling
+    });
+}

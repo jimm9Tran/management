@@ -1,0 +1,387 @@
+.carousel-container {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    margin-top: 10px;
+}
+.carousel2 {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-item2 {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.carousel-item2>img {
+    width: 100%;
+    height: 390px;
+    display: block;
+}
+
+
+/*==============See-more==============*/
+.see-more {
+    padding-bottom: 20px; 
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.see-more a {
+    display: inline-block; /* Ensures the link is treated as a block for better spacing */
+    padding: 10px 20px; /* Padding for the button-like appearance */
+    background: none; /* Remove background to eliminate box effect */
+    color: #888888; /* Set text color to gray */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease; /* Smooth transition for color */
+}
+
+.see-more a:hover {
+    color: #555555; /* Darker gray on hover */
+    transform: translateY(-2px);
+}
+
+.see-more a:active {
+    color: #888888; /* Reset to original gray on click */
+    transform: translateY(0);
+}
+
+
+
+
+/* ============= Famous Brands ============= */
+.brand-title {
+    text-align: left; /* Căn trái cho tiêu đề */
+    margin-bottom: 10px; /* Khoảng cách dưới tiêu đề */
+    font-size: 24px; /* Kích thước chữ */
+    color: #333; /* Màu chữ */
+}
+
+.brand-description {
+    text-align: left; /* Căn trái cho mô tả */
+    margin-bottom: 20px; /* Khoảng cách dưới mô tả */
+    color: #555; /* Màu chữ xám cho mô tả */
+}
+
+
+.famous-brands {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 10px 10px;
+    background-color: #fff;
+    display: flex; /* Sử dụng flex để bố trí các dòng */
+    flex-wrap: wrap; /* Cho phép các mục xuống dòng khi không đủ chỗ */
+    justify-content: space-between; /* Phân bố đều không gian giữa các phần tử */
+}
+
+.famous-brands > .line1-1,
+.famous-brands > .line1-2 {
+    display: flex; /* Sử dụng flex cho các dòng */
+    flex: 1; /* Để các dòng chiếm đều chiều rộng */
+    justify-content: space-between; /* Phân bố đều giữa các mục */
+    text-align: center;
+    color: #111111;
+    margin-bottom: 10px; /* Khoảng cách giữa các dòng */
+}
+
+.famous-brands > .line1-1 > .item,
+.famous-brands > .line1-2 > .item {
+    background-color: #fff;
+    width: calc(20% - 15px); /* Chiều rộng mỗi mục */
+    height: 220px; /* Chiều cao cố định cho các mục, điều chỉnh lại để đủ chỗ cho tiêu đề */
+    margin: 10px; /* Khoảng cách giữa các mục */
+    display: flex; /* Sử dụng flex cho mục */
+    flex-direction: column; /* Đặt hướng thành cột */
+    justify-content: center; /* Đảm bảo khoảng cách giữa ảnh và tiêu đề đều nhau */
+    align-items: center; /* Căn giữa theo chiều ngang */
+}
+
+.famous-brands > .line1-1 > .item > a,
+.famous-brands > .line1-2 > .item > a {
+    text-decoration: none;
+    display: flex; /* Để căn giữa nội dung */
+    flex-direction: column; /* Đặt hướng thành cột */
+    align-items: center; /* Căn giữa theo chiều ngang */
+    justify-content: center; /* Căn giữa theo chiều dọc */
+    height: 100%; /* Chiếm toàn bộ chiều cao */
+}
+
+.famous-brands > .line1-1 > .item > a > img,
+.famous-brands > .line1-2 > .item > a > img {
+    width: 100%; /* Chiều rộng hình ảnh 100% */
+    height: 140px; /* Chiều cao cố định cho hình ảnh */
+    object-fit: contain; /* Giữ nguyên tỷ lệ và không cắt */
+}
+
+
+.famous-brands > .line1-1 > .item > a > h3,
+.famous-brands > .line1-2 > .item > a > h3 {
+    margin: 10px 0; /* Giảm khoảng cách trên và dưới để đồng đều hơn */
+    font-size: 16px; /* Kích thước chữ đồng nhất */
+    text-align: center; /* Căn giữa văn bản */
+    color: #333; /* Màu sắc chữ */
+    flex-grow: 1; /* Để tiêu đề chiếm không gian còn lại */
+}
+
+
+/*============= News ===================*/
+.news {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 300px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.carousel-menu-news {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* For Firefox */
+}
+
+.carousel-menu-news::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Edge */
+}
+
+.carousel-menu-news .item {
+    min-width: 400px;
+    height: 300px;
+    margin: 0 10px;
+}
+
+.carousel-menu-news .item a {
+    text-decoration: none;
+}
+
+.carousel-menu-news .item a img {
+    width: 100%; /* Responsive */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 250px; /* Limit image height */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.arrow {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #fff;
+    padding: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.left-arrow {
+    left: 0;
+}
+
+.right-arrow {
+    right: 0;
+}
+
+/* End new */
+
+
+/* sản phẩm nổi bật */
+
+
+/* General container for the product section */
+.section-products-featured {
+    margin: 20px 0;
+}
+
+.section-products-featured .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px; /* Khoảng cách giữa các sản phẩm */
+    padding: 0 40px; /* Giảm padding để các sản phẩm sát mép màn hình hơn */
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Thiết lập cho thẻ sản phẩm */
+.product-card {
+    width: calc(25% - 20px); /* Mỗi sản phẩm chiếm 1/4 màn hình, trừ khoảng cách giữa chúng */
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    text-align: center;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Đảm bảo chiều cao đồng đều */
+}
+
+/* Hiệu ứng khi hover vào thẻ sản phẩm */
+.product-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Hình ảnh sản phẩm */
+.inner-image {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 220px; /* Chiều cao tối thiểu để tránh bị nhỏ hình */
+    background-color: #f9f9f9; /* Màu nền cho vùng ảnh */
+}
+
+.product-image {
+    max-width: 100%;
+    max-height: 220px; /* Đảm bảo chiều cao ảnh đồng nhất */
+    object-fit: contain; /* Đảm bảo ảnh giữ nguyên tỉ lệ, không bị cắt */
+    
+}
+
+img {
+    transition: transform 0.3s ease-in-out;
+}
+
+.item img:hover {
+    transform: scale(1.1); /* Zoom khi hover */
+}
+
+.product-image:hover {
+    transform: scale(1.1); /* Zoom khi hover */
+}
+/* Thẻ "Nổi bật" */
+.inner-featured {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+/* Thông tin sản phẩm */
+.product-info {
+    margin-top: 10px;
+}
+
+/* Tiêu đề sản phẩm */
+.product-title a {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+    min-height: 40px; /* Đảm bảo tất cả tiêu đề chiếm cùng một không gian */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Căn giữa tiêu đề theo cả chiều dọc và ngang */
+}
+
+.product-title a:hover {
+    color: #007bff;
+}
+
+/* Giá sản phẩm */
+.product-price {
+    font-size: 18px;
+    color: #333;
+    margin-top: auto;
+}
+
+/* Nút "Xem thêm" */
+.see-more {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.see-more a {
+    color: #383b3f;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.see-more a:hover {
+    text-decoration: none;
+}
+
+/* Responsive design cho các kích thước màn hình khác nhau */
+@media (max-width: 1200px) {
+    .product-card {
+        width: 31%; /* Hiển thị 3 sản phẩm trên mỗi hàng cho màn hình trung bình */
+    }
+}
+
+@media (max-width: 768px) {
+    .product-card {
+        width: 48%; /* Hiển thị 2 sản phẩm trên mỗi hàng cho máy tính bảng */
+    }
+}
+
+@media (max-width: 576px) {
+    .product-card {
+        width: 100%; /* Hiển thị 1 sản phẩm trên mỗi hàng cho thiết bị di động */
+    }
+}
+
+/* Giá sản phẩm */
+.product-price {
+    font-size: 18px; /* Kích thước chữ vừa phải */
+    color: #333; /* Màu chữ chính */
+    font-weight: bold; /* Làm nổi bật giá */
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+}
+
+.product-price::before {
+    content: 'Giá: '; /* Thêm từ "Giá" trước số tiền */
+    font-size: 16px;
+    font-weight: normal;
+    color: #666;
+}
+
+.product-price span.old-price {
+    text-decoration: line-through; /* Gạch ngang giá cũ */
+    color: #888; /* Màu nhạt cho giá cũ */
+    margin-right: 10px; /* Khoảng cách giữa giá cũ và giá mới */
+}
+
+.product-price span.new-price {
+    color: #e74c3c; /* Màu đỏ nổi bật cho giá mới */
+    font-size: 20px; /* Kích thước lớn hơn cho giá mới */
+    font-weight: bold;
+}
+
+.product-price span.discount {
+    font-size: 14px; /* Nhỏ hơn cho phần trăm giảm giá */
+    color: #27ae60; /* Màu xanh lá cho phần trăm giảm giá */
+    font-weight: bold;
+    margin-left: 10px; /* Khoảng cách giữa giá và phần trăm giảm */
+}
+
+/* Ví dụ nếu có sản phẩm giảm giá, hiển thị giá gốc và giá giảm */
+.product-card.discounted .product-price {
+    text-align: center;
+}
+
+.product-card.discounted .product-price span.old-price {
+    display: inline-block;
+}
+
+.product-card.discounted .product-price span.new-price {
+    display: inline-block;
+}
+
+.product-card.discounted .product-price span.discount {
+    display: inline-block;
+}
