@@ -35,7 +35,7 @@ module.exports.index = async (req, res) => {
 };
 
 
-// [GET] /products/:slug
+// [GET] /products/:slugProduct
 module.exports.detail = async (req, res) => {
     try {
         const find = {
@@ -44,17 +44,20 @@ module.exports.detail = async (req, res) => {
             slug: req.params.slugProduct
         };
 
-        const product = await Product.findOne(find);
+        const product = await Product.findOne(find).lean();
 
         if(product.product_category_id) {
             const category = await ProductCategory.findOne({
                 _id: product.product_category_id,
                 status: "active",
                 deleted: false
-            });
-
+            }); 
+            // console.log("Category:", category);
             product.category = category;
+            // console.log(product);
+            console.log(product.category.title);
         }
+        
 
         if (!product) {
             return res.status(404).send("Sản phẩm không tồn tại.");
@@ -62,7 +65,8 @@ module.exports.detail = async (req, res) => {
 
         res.render("client/pages/products/detail", {
             pageTitle: product.title,
-            product: product
+            product: product,
+            
         });
     } catch (error) {
         console.error("Error fetching product detail:", error);
