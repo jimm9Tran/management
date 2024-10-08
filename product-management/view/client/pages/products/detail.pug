@@ -13,10 +13,10 @@ block main
                 .col-md-6
                     h1(class="inner-title") #{product.title}
 
-                    if (product.category)
-                        div(class="inner-category")
-                            span Danh mục:
-                            a(href=`/products/${product.category.slug}`) #{product.category.title}
+                    //- if (product.category)
+                    //-     div(class="inner-category")
+                    //-         span Danh mục:
+                    //-         a(href=`/products/${product.category.slug}`) #{product.category.title}
                     
                     if (product.price)
                         div(class="inner-price") Giá: #{product.price}đ

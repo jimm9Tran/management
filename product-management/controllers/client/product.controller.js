@@ -6,10 +6,19 @@ const productCategoryHelper = require("../../helpers/product-category");
 // [GET] /products
 module.exports.index = async (req, res) => {
     try {
+
+        const limitItem = 12;
+        const page = req.query.page ? parseInt(req.query.page) : 1;
+
+        const totalProducts = await Product.countDocuments({
+            status: "active",
+            deleted: false
+        });
+
         const products = await Product.find({
             status: "active",
             deleted: false
-        }).sort({ position: "desc" });
+        }).sort({ position: "desc" }).skip((page-1)*limitItem).limit(limitItem);
 
         // Correct discount calculation
         const newProducts = products.map(item => {
@@ -23,10 +32,14 @@ module.exports.index = async (req, res) => {
         });
         const newProductCategory = createTreeHelper.tree(productsCategory);
 
+        const totalPages = Math.ceil(totalProducts / limitItem);
+
         res.render("client/pages/products/index", {
             pageTitle: "Danh sách sản phẩm",
             products: newProducts,
-            newProductCategory: newProductCategory
+            newProductCategory: newProductCategory,
+            currentPage: page,
+            totalPages: totalPages
         });
     } catch (error) {
         console.error("Error fetching products:", error);
@@ -52,6 +65,7 @@ module.exports.detail = async (req, res) => {
                 status: "active",
                 deleted: false
             }); 
+
             product.category = category;
         }
         
@@ -73,6 +87,15 @@ module.exports.detail = async (req, res) => {
 
 // [GET] /products/:slugCategory
 module.exports.category = async (req, res) => {
+
+    const limitItem = 12    ;
+    const page = req.query.page ? parseInt(req.query.page) : 1;
+
+    const totalProducts = await Product.countDocuments({
+        status: "active",
+        deleted: false
+    });
+
     const category = await ProductCategory.findOne({
         slug: req.params.slugCategory,
         status: "active",
@@ -85,10 +108,14 @@ module.exports.category = async (req, res) => {
     const products = await Product.find({
         product_category_id: { $in: [category.id, ...listSubCategoryId] },
         deleted: false
-    }).sort({position: "desc"});
+    }).sort({position: "desc"}).skip((page-1)*limitItem).limit(limitItem);;
     
+    const totalPages = Math.ceil(totalProducts / limitItem);
+
     res.render("client/pages/products/index", {
         pageTitle: category.title,
         products: products,
+        currentPage: page,
+        totalPages: totalPages
     });
 };
