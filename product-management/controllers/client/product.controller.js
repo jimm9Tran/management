@@ -44,7 +44,7 @@ module.exports.detail = async (req, res) => {
             slug: req.params.slugProduct
         };
 
-        const product = await Product.findOne(find).lean();
+        const product = await Product.findOne(find);
 
         if(product.product_category_id) {
             const category = await ProductCategory.findOne({
@@ -52,10 +52,7 @@ module.exports.detail = async (req, res) => {
                 status: "active",
                 deleted: false
             }); 
-            // console.log("Category:", category);
             product.category = category;
-            // console.log(product);
-            console.log(product.category.title);
         }
         
 
