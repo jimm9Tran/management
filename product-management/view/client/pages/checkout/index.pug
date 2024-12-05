@@ -1,0 +1,34 @@
+extends ../../layouts/default.pug 
+include ../../mixins/box-head.pug
+include ../../mixins/alert.pug
+
+block main
+    +alert-success(5000)
+    +alert-error(5000)
+
+    tbody
+        if cartDetail.products.length > 0
+            each item, index in cartDetail.products
+                tr
+                    td.product
+                        img(src=item.productInfor.thumbnail alt=item.productInfor.title)
+                        .product-info
+                            a.product-name(href=`/products/detail/${item.productInfor.slug}`) #{item.productInfor.title}
+                    td.price #{item.productInfor.price}₫
+                    td.quantity
+                        button.jycvmI0dbYaDh30Kquantity-btn.minus-btn(type="button", data-id=item.product_id) -
+                        input.quantity-input(
+                            type="number" 
+                            value=item.quantity
+                            min="1"
+                            name="quantity"
+                            product-id=item.product_id
+                        )
+                        button.quantity-btn.plus-btn(type="button", data-id=item.product_id) +
+                    td.subtotal #{item.totalPrice}₫
+                    td
+                        // X button for removing item
+                        a.remove-item(href=`/cart/delete/${item.product_id}`) x
+            a.continue-shopping(href="/") ← TIẾP TỤC XEM SẢN PHẨM
+        else
+            h1 Không có sản phẩm nào trong giỏ hàng
