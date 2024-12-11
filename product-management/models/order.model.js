@@ -21,7 +21,7 @@ const orderSchema = new mongoose.Schema({
 
     deleted: {
         type: Boolean,
-        default: False
+        default: false,
     },
     deletedDate: Date,
 }, {
