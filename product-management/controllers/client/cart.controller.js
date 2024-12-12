@@ -110,9 +110,6 @@ module.exports.update = async (req, res) => {
         }
     });
 
-    // console.log(`Product ID: ${productId}, Quantity: ${quantity}`);
-    // console.log(`Cart ID: ${cartId}, Product ID: ${productId}, Quantity: ${quantity}`);
-
 
     if (result.nModified === 0) {
         req.flash("error", "Không thể cập nhật sản phẩm");

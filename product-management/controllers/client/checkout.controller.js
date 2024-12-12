@@ -2,6 +2,8 @@ const Cart = require("../../models/cart.model");
 const Product = require("../../models/product.model");
 const Order = require("../../models/order.model");
 
+const productsHelper = require("../../helpers/products");
+
 // [GET] /checkout
 module.exports.index = async (req, res) => {
     const cartId = req.cookies.cartId;
@@ -13,14 +15,14 @@ module.exports.index = async (req, res) => {
     if(cart.products.length > 0) {
         for (const item of cart.products) {
             const productId = item.product_id;
-            const productInfor = await Product.findOne({
+            const productInfo = await Product.findOne({
                 _id: productId,   
             }).select("title thumbnail slug price");
             
 
 
-            item.productInfor = productInfor;
-            item.totalPrice = productInfor.price * item.quantity;
+            item.productInfo = productInfo;
+            item.totalPrice = productInfo.price * item.quantity;
         }
     }
 
@@ -35,7 +37,7 @@ module.exports.index = async (req, res) => {
 // [GET] /checkout/order
 module.exports.order = async (req, res) => {
     const cartId = req.cookies.cartId;
-    const userInfor = req.body;
+    const userInfo = req.body;
 
     const cart = await Cart.findOne({
         _id: cartId
@@ -61,13 +63,14 @@ module.exports.order = async (req, res) => {
         products.push(objectProduct);
     }
 
-    const orderInfor = {
+
+    const orderInfo = {
         cart_id: cartId,
-        userInfor: userInfor,
+        userInfo: userInfo,
         products: products,
     };
     
-    const order = new Order(orderInfor);
+    const order = new Order(orderInfo);
     order.save();
     
     await Cart.updateOne({
@@ -81,9 +84,25 @@ module.exports.order = async (req, res) => {
 
 // [GET] /checkout/success/:orderId
 module.exports.success = async (req, res) => {
-    console.log(req.params.orderId);
+
+    const order = await Order.findOne({
+        _id: req.params.orderId
+    });
+    
+    for (const product of order.products){
+        const productInfo = await Product.findOne({
+            _id: product.product_id
+        }).select("title thumbnail");
+        
+        product.productInfo = productInfo;
+        product.priceNew = productsHelper.calculateNewPrice(product);
+        product.totalPrice = product.priceNew * product.quantity;
+    }
+
+    order.totalPrice = order.products.reduce((sum, item) => sum + item.totalPrice, 0);
 
     res.render("client/pages/checkout/success", {
-        pageTitle: "Dat hang thanh cong",
+        pageTitle: "Đặt hàng thành công",
+        order: order,
     });
 }
