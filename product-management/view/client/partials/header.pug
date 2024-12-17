@@ -31,8 +31,14 @@ header.logo
                     img(src="/images/cart.png", alt="Giỏ hàng")
                     span.cart-count #{miniCart ? miniCart.totalQuantity : 0}
 
-            .dk 
-                a(href="/user/register") Đăng ký
-                
+            if (user)
+                a(href="/user/logout") Đăng xuất
+            else
+                .dk 
+                    a(href="/user/register") Đăng ký
+                .dk 
+                    a(href="/user/login") Đăng nhập
+
+                    
 
 
